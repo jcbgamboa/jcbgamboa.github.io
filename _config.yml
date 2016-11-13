@@ -2,7 +2,7 @@
 
 # GitHub is saying I shouldn't use `redcarpet` anymore
 #markdown:         redcarpet
-highlighter:      pygments
+highlighter:      rouge
 
 # ----- Permalinks
 permalink:        pretty
@@ -13,7 +13,7 @@ relative_permalinks: false
 # ----- Setup
 title:            John Gamboa
 #tagline:          'Create something some day'
-description:      '...'
+description:      ''
 #url:              http://hyde.getpoole.com
 baseurl:          /
 
@@ -27,6 +27,5 @@ paginate:         5
 
 #version:          2.1.0
 
-github:
-  repo:           https://github.com/vaulttech/vaulttech.github.io/
+github:            https://github.com/vaulttech/
 
