@@ -1,26 +1,32 @@
-# Dependencies
-markdown:         redcarpet
+# ----- Dependencies
+
+# GitHub is saying I shouldn't use `redcarpet` anymore
+#markdown:         redcarpet
 highlighter:      pygments
 
-# Permalinks
+# ----- Permalinks
 permalink:        pretty
+
+# GitHub says relative_permalinks can't be used anymore
 relative_permalinks: false
 
-# Setup
-title:            Gamboa
+# ----- Setup
+title:            John Gamboa
 #tagline:          'Create something some day'
 description:      '...'
-url:              http://hyde.getpoole.com
+#url:              http://hyde.getpoole.com
 baseurl:          /
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'John Gamboa'
+  url:            https://vaulttech.github.io
 
 paginate:         5
 
-# Custom vars
-version:          2.1.0
+# ----- Custom vars
+
+#version:          2.1.0
 
 github:
   repo:           https://github.com/vaulttech/vaulttech.github.io/
+

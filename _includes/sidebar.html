@@ -1,5 +1,6 @@
 <div class="sidebar">
-  <div class="container sidebar-sticky">
+  <!--div class="container sidebar-sticky"-->
+  <div class="container">
     <div class="sidebar-about">
       <h1>
         <a href="{{ site.baseurl }}">
@@ -22,6 +23,8 @@
         {% if node.title != null %}
           {% if node.layout == "page" %}
             <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+          {% else %}
+            {{ node.path }}
           {% endif %}
         {% endif %}
       {% endfor %}
