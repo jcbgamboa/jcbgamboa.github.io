@@ -75,7 +75,7 @@ This place a body bazaar seems to me
 
 ## Poems in Portuguese
 
-###Recursão
+### Recursão
 
 Você sabe o que é recursão?
 <br>Não?
@@ -103,7 +103,7 @@ Tomara que tenha entendido;
 <br>é somente doido varrido
 <br>da matemática ou engenharia
 
-###Da janela do meu quarto
+### Da janela do meu quarto
 
 Da janela do meu quarto,
 <br>vejo um monte de gente,
@@ -136,14 +136,14 @@ Da janela do meu quarto,
 <br>na janela do meu quarto...
 
 
-###Haikai indignado
+### Haikai indignado
 
 Se é pra ter poema
 <br>Sem musicalidade
 <br>Aqui está o meu
 
 
-###Rinite
+### Rinite
 
 (usando o template de Debussy, de Manuel Bandeira)
 
@@ -160,7 +160,7 @@ Atchim, atchum...
 <br>Atchim, ...
 <br>O remédio fez efeito 
 
-###Poema na Madrugada
+### Poema na Madrugada
 
 Extremamente cansado,
 <br>totalmente ligado...
@@ -177,7 +177,7 @@ Algo de que o café
 E pra terminar esse poema
 <br>vou-me dormir que pra amanhã tem tema.
 
-###Teste-Poema
+### Teste-Poema
 
 Monto agora um poema
 <br>com um algoritmo um tanto
@@ -198,7 +198,7 @@ Monto agora um poema
 <br>(até que difícil, no entanto)
 <br>de montar este teste-poema.
 
-###De raiva, sem sono
+### De raiva, sem sono
 
 4h30 da manhã e eu acordado.
 <br>Meu irmão bem roncando, desgraça! Viado!
@@ -214,7 +214,7 @@ E assim vou ficando, sem poder dormir.
 <br>eu perca (ou nem ache) pra minha aflição,
 <br>até mesmo quando sem causa ou razão.
 
-###Beleza
+### Beleza
 
 Pequena, sublime, serena, suprema beleza,
 <br>que passa cantante e vibrante por mim devagar.
@@ -236,7 +236,7 @@ Sujeito-me agora à ausência de sua beleza.
 <br>Direito não tinha a violência de sua frieza
 <br>o efeito de minha existência assim arruinar.
 
-###Atalho
+### Atalho
 
 Sem paz, permanece o menino,
 <br>em vão, nem insano nem são.
@@ -256,7 +256,7 @@ Não sabe se aquilo que vê
 <br>sozinho o caminho a correr.
 <br>Melhor já se sente, poeta.
 
-###Adulto
+### Adulto
 
 O tempo vai passando... com ele, a gente,
 <br>sem dúvida que, quando, no porvir,
@@ -277,7 +277,7 @@ Parece que não é como se pensa,
 <br>... ou o é e eu que adulto não sei ser?
 
 
-###Oh Lua
+### Oh Lua
 
 A Lua há tempo já não
 <br>está.
