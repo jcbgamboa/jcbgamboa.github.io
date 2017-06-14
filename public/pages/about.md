@@ -35,6 +35,10 @@ side bar for a list of my "artistic production" :-)
 
 ## Other Texts
 
+ *  Dash, Ayushman, et al. "AirScript-Creating Documents in Air." arXiv preprint
+    arXiv:1705.11181 (2017).
+ *  Dash, Ayushman, et al. "TAC-GAN-Text Conditioned Auxiliary Classifier
+    Generative Adversarial Network." arXiv preprint arXiv:1703.06412 (2017).
  *  Summary on **Philosophy of the Mind**. Text written for the conclusion of
     the subject on Philosophy of the Mind in the TU Kaiserslautern. February
     2016.
