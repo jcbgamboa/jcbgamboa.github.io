@@ -32,12 +32,12 @@ side bar for a list of my "artistic production" :-)
  *  Binsfeld, R., Gamboa, J., & Walter, M. (2011, August). Visual patterns in
     the plant kingdom. In 2011 24th SIBGRAPI Conference on Graphics, Patterns
     and Images (pp. 86-92). IEEE.
+ *  Dash, Ayushman, et al. "AirScript-Creating Documents in Air." arXiv preprint
+    arXiv:1705.11181 (2017). (accepted publication in ICDAR 2017)
+    [Link](https://arxiv.org/pdf/1705.11181.pdf)
 
 ## Other Texts
 
- *  Dash, Ayushman, et al. "AirScript-Creating Documents in Air." arXiv preprint
-    arXiv:1705.11181 (2017).
-    [Link](https://arxiv.org/pdf/1705.11181.pdf)
  *  Dash, Ayushman, et al. "TAC-GAN-Text Conditioned Auxiliary Classifier
     Generative Adversarial Network." arXiv preprint arXiv:1703.06412 (2017).
     [Link](https://arxiv.org/pdf/1703.06412.pdf)
