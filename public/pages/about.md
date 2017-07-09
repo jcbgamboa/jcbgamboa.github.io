@@ -12,7 +12,7 @@ I am currently a Master student in Computer Science in the
 Machine Learning, with a special focus on Deep Neural Networks, having
 experience with the mainstream Machine Learning libraries.
 
-In the course of the last four years, I have also grown interest for the
+In the course of the last five years, I have also grown interest for the
 Cognitive Sciences (initially for Linguistics; later for Psychology and
 Philosophy; and currently for Computational Neuroscience, given my focus
 on Deep Learning), having worked in the area for a while.
@@ -27,7 +27,7 @@ side bar for a list of my "artistic production" :-)
 [University of Kaiserslautern]: https://www.uni-kl.de "TU KL"
 
 
-## Publication
+## Publications
 
  *  Binsfeld, R., Gamboa, J., & Walter, M. (2011, August). Visual patterns in
     the plant kingdom. In 2011 24th SIBGRAPI Conference on Graphics, Patterns
