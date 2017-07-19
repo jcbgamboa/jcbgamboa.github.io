@@ -24,7 +24,7 @@ In the summer some days,
 <br>by mistake, in my craze,
 <br>a headache. "Well, a lot,
 <br>do I love"... (then I thought)...
-<br>all these summer sundays.
+<br>"all these summer sundays."
 
 ### On Home
 
