@@ -14,6 +14,18 @@ they were written. Hopefully, the mystery will make them more enjoyable :-)
 
 ## Poems in English
 
+### In the summer sundays
+
+In the summer some days,
+<br>when not grey the day stays,
+<br>even tough it is hot,
+<br>you can bet I forgot
+<br>to drink water, and got
+<br>by mistake, in my craze,
+<br>a headache. "Well, a lot,
+<br>do I love"... (then I thought)...
+<br>all these summer sundays.
+
 ### On Home
 
 _(written for a presentation in the Kaiserslautern University ISGS's
