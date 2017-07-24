@@ -15,7 +15,7 @@ title:            John Gamboa
 #tagline:          'Create something some day'
 description:      ''
 #url:              http://hyde.getpoole.com
-baseurl:          /
+baseurl:          '/'
 
 author:
   name:           'John Gamboa'
