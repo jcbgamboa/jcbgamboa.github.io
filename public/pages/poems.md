@@ -14,6 +14,38 @@ they were written. Hopefully, the mystery will make them more enjoyable :-)
 
 ## Poems in English
 
+### Villanelle of the Despair
+
+_(my first experiment with the structure of the
+[Vilanelle](https://en.wikipedia.org/wiki/Villanelle))_
+
+I, human, such is my mistake
+<br>in vain, in pain, I will remain
+<br>a curse it is and will not break
+
+When searching I for what I take
+<br>as good and sane, none I attain.
+<br>I, human, such is my mistake
+
+Then suffer comes, and though I fake,
+<br>I feign, I'm fine; inside I wane:
+<br>a curse it is and will not break
+
+Some day then comes, when my ache
+<br>high reigns, and to give up I fain.
+<br>I, human, such is my mistake
+
+and then I see, for Christ's sake:
+<br>that which I aimed is mine plain;
+<br>a curse it is and will not break
+
+Again I learn, I then awake:
+<br>my want I ought not chase insane.
+<br>I, human, such is my mistake
+<br>a curse it is and will not break
+
+
+
 ### In the summer sundays
 
 In the summer some days,
