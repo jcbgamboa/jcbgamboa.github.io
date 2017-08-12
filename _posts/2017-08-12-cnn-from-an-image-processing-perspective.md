@@ -78,7 +78,7 @@ Here we have the two curves:
 ![Two signals](public/grid1.gif)
 
 
-**First**: flip $g$ horizontally at the point $t$.
+**First**: flip $g$ horizontally.
 Let's give the flipped $g$ a name, say $g'$. (if you don't flip $g$,
 then what you are calculating has actually the name of "correlation",
 and is simply another typical operation in signal processing.)
@@ -88,7 +88,7 @@ and is simply another typical operation in signal processing.)
 
 **Second**: shift $g'$ horizontally by $t$ units. If $t$ is
 positive, then $g'$ will be shifted to the right; otherwise, it will
-be shifted to the left. I'll call this function $shifted_g'$
+be shifted to the left. I'll call this function $g_{shifted}'$
 
 ![Shifted signal](public/grid3.gif)
 
@@ -102,9 +102,9 @@ Because we are multiplying the two values, we only care about the values
 where both functions are not 0. In all other cases, the integral will
 be 0 anyway. Let's assume that both functions are non-zero only in an
 interval $[a, b]$. In this case, our problem reduces to calculating the
-integral of the multiplication of $f$ and $shifted_g'$ inside that
+integral of the multiplication of $f$ and $g_{shifted}'$ inside that
 interval. Now it could still be a challenge to calculate the
-integral of the $shifted_g'$ and "f" in that interval.
+integral of the $g_{shifted}'$ and "f" in that interval.
 
 ![Calculate area below curve](public/grid4.gif)
 
@@ -128,7 +128,7 @@ instead of an integral we now have a sum. So, given the interval
 $[a, b]$, we could calculate the convolution as
 
 $$
-  (f \ast g)(t) = \sum^b_{i=a}{f(i) * shifted_g'(i)}
+  (f \ast g)(t) = \sum^b_{i=a}{f(i) * g_{shifted}'(i)}
 $$
 
 And fortunately this sum is easy to calculate.
@@ -144,8 +144,76 @@ values. For example, $f$ and $g$ could be represented as:
 $$
 f = [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
 g = [\dots 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
-\text{(Of course, the number of "1" and "2" depends on how the discretization was performed)}
 $$
+_(Of course, the number of ``1" and ``2" depends on how the discretization was performed)_
+
+Now let's say I'd like to calculate the value of the convolution
+between $f$ and $g$ at the point $t = $*some coordinate*. It is hard
+to point the exact place, so I'll make the place bold:
+
+$$
+f = [\dots 0, 0, 1, 1, \textbf{1}, 1, 0, 0, \dots] \\
+$$
+_(For future reference, I'll call this position $t=2$)_
+
+The way to calculate it is just the same:
+
+ 1) Flip $g$ (but it has no effect here, because $g$ is symmetric anyway);
+
+ 2) Move $g$ horizontally by $t$: this is a little abstract here; but if we
+    align the $f$ and $g$ the way they were initially aligned, then we should
+    get:
+
+$$
+f = [\dots 0, 0, 1, 1, \textbf{1}, \textbf{1}, 0, 0, 0, 0, \dots] \\
+g = [\dots 0, 0, 0, 0, \textbf{2}, \textbf{2}, 2, 2, 0, 0, \dots] \\
+$$
+
+ 3) Multiply all elements position by position and sum them all.
+
+$$
+  (f \ast g)(t) = 1 * 2 + 1 * 2 = 4
+$$
+
+You might have noticed how these operations may resemble dot-products.
+You could have implemented them as:
+
+$$
+  (f \ast g)(t) = [1, 1] \dot [2, 2]
+$$
+
+This way, if you wanted to calculate the convolution for many
+different values of $t$, you could just keep shifting the vector $g$.
+
+_f
+
+$$
+t = 0 \\
+f = [\dots 0, 0, 1, 1, 1, 1, 0, \dots] \\
+g = [\dots 0, 0, 2, 2, 2, 2, 0, \dots] \\
+(f \ast g)(t) = [1, 1, 1, 1] \dot [2, 2, 2, 2] = 8
+\quad
+t = 1 \\
+f = [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
+g = [\dots 0, 0, 0, 2, 2, 2, 2, 0, \dots] \\
+(f \ast g)(t) = [1, 1, 1] \dot [2, 2, 2] = 6
+\quad
+f &= [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
+g &= [\dots 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
+(f \ast g)(t) &= [\dots 4, 6, 8, 6, 4, 2, 0, 0, \dots]
+$$
+
+
+Unfortunately, these are still vectors with an infinite number of
+dimensions, which are hard to store in our limited storage computers.
+But, well, we don't care about all those zeros there, so we could
+just drop them:
+
+$$
+f = [0, 1, 1, 1, 1, 0, 0] \\
+g = [0, 2, 2, 2, 2, 0, 0] \\
+$$
+_(As you can see, I kept some of the zeros. I could have removed them. It was my choice)_
 
 
 
