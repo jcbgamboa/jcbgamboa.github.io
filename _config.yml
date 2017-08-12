@@ -1,7 +1,7 @@
 # ----- Dependencies
 
 # GitHub is saying I shouldn't use `redcarpet` anymore
-#markdown:         redcarpet
+markdown:         maruku
 highlighter:      rouge
 
 # ----- Permalinks
