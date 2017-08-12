@@ -188,19 +188,16 @@ different values of $t$, you could just keep shifting the vector $g$.
 _f
 
 $$
-t = 0 \\
-f = [\dots 0, 0, 1, 1, 1, 1, 0, \dots] \\
-g = [\dots 0, 0, 2, 2, 2, 2, 0, \dots] \\
-(f \ast g)(t) = [1, 1, 1, 1] \dot [2, 2, 2, 2] = 8
-\quad
-t = 1 \\
-f = [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
-g = [\dots 0, 0, 0, 2, 2, 2, 2, 0, \dots] \\
-(f \ast g)(t) = [1, 1, 1] \dot [2, 2, 2] = 6
-\quad
-f &= [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
-g &= [\dots 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
-(f \ast g)(t) &= [\dots 4, 6, 8, 6, 4, 2, 0, 0, \dots]
+\begin{align*}
+t &= 0 & t &= 1 & & \\
+
+f &= [\dots 0, 0, 1, 1, 1, 1, 0, \dots] & f &= [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] & f &= [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
+
+g &= [\dots 0, 0, 2, 2, 2, 2, 0, \dots] & g &= [\dots 0, 0, 0, 2, 2, 2, 2, 0, \dots] & g &= [\dots 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
+
+(f \ast g)(t) &= [1, 1, 1, 1] \dot [2, 2, 2, 2] = 8 & (f \ast g)(t) &= [1, 1, 1] \dot [2, 2, 2] = 6 & (f \ast g)(t) &= [\dots 4, 6, 8, 6, 4, 2, 0, 0, \dots]
+
+\end{align*}
 $$
 
 
