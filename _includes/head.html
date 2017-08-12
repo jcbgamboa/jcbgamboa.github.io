@@ -23,6 +23,10 @@
   <link rel="stylesheet" href="/public/css/syntax.css">
   <link rel="stylesheet" href="/public/css/hyde.css">
 
+  {% if page.use_math %}
+    {% include mathjax_support.html %}
+  {% endif %}
+
   <!--link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css" -->
   <!--link rel="stylesheet" href="{{ site.baseurl }}public/css/syntax.css" -->
   <!--link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css" -->
