@@ -88,24 +88,23 @@ and is simply another typical operation in signal processing.)
 
 **Second**: shift $g'$ horizontally by $t$ units. If $t$ is
 positive, then $g'$ will be shifted to the right; otherwise, it will
-be shifted to the left.
+be shifted to the left. I'll call this function $shifted_g'$
 
 ![Shifted signal](public/grid3.gif)
 
 **Third**: this is the step where the problems arise.
 Now what you want is actually multiply the two
 curves are each point between $-\infty$ and $+\infty$ and calculate the
-area below the curve that this multiplication will form. But there are
-two points that could make your life easier. The first of them is that
-it is worth noting that very often
-the functions $f$ and $g$ for which we want to calculate a
-convolution are 0 in most of their domain.
-Therefore it may be the case now that the non-zero parts of $f$ and
-the shifted version of $g'$ do not even intersect, or only intersect
-in some places (by "intersection", I mean that $g'$ and $f$ are non-zero
-for the same $x$ inputs). Let's say they intersect in an
-interval $[a, b]$. Now it could still be a challenge to calculate the
-integral of the shifted $g'$ and "f" in that interval.
+area below the curve that this multiplication will form.
+Let's assume that the functions are zero most of the time (just like
+in our example), and non-zero only in a small section of their domain.
+Because we are multiplying the two values, we only care about the values
+where both functions are not 0. In all other cases, the integral will
+be 0 anyway. Let's assume that both functions are non-zero only in an
+interval $[a, b]$. In this case, our problem reduces to calculating the
+integral of the multiplication of $f$ and $shifted_g'$ inside that
+interval. Now it could still be a challenge to calculate the
+integral of the $shifted_g'$ and "f" in that interval.
 
 ![Calculate area below curve](public/grid4.gif)
 
@@ -114,20 +113,51 @@ integral of the shifted $g'$ and "f" in that interval.
 In it you can define your own functions and play arround to find out
 how the convolution is going to be.)
 
-Now, the problem with
+The problem with
 continuous convolutions is that we would have to actually calculate
 an integral. But what if our function were actually "discrete"?
+Fortunately for us, most applications on Image Processing require
+discrete signals, and for our purposes it would be perfectly ok to
+discretize these continuous signals.
 
 ![Calculate sum of elements below curve](public/grid5.gif)
 
-All the concepts we have discussed so far would follow the same logic
-for the discrete case. Now,
+After discretization, All the concepts we have discussed so far would
+follow the same logic. Now,
 instead of an integral we now have a sum. So, given the interval
 $[a, b]$, we could calculate the convolution as
 
 $$
-  \sum^b_a{f(i) * g(j)}
+  (f \ast g)(t) = \sum^b_{i=a}{f(i) * shifted_g'(i)}
 $$
+
+And fortunately this sum is easy to calculate.
+
+1D discrete convolutions
+------------------------
+
+It turns out that the functions $f$ and $g$ used in convolutions are
+in reality mostly composed by zeros (as assumed before). This allows
+for a much more compact representation of the functions as a vector of
+values. For example, $f$ and $g$ could be represented as:
+
+$$
+f = [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
+g = [\dots 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
+\text{(Of course, the number of "1" and "2" depends on how the discretization was performed)}
+$$
+
+
+
+The first of them is that
+it is worth noting that very often
+the functions $f$ and $g$ for which we want to calculate a
+convolution are 0 in most of their domain.
+Therefore it may be the case now that the non-zero parts of $f$ and
+the shifted version of $g'$ do not even intersect, or only intersect
+in some places (by "intersection", I mean that $g'$ and $f$ are non-zero
+for the same $x$ inputs). Let's say they intersect in an
+interval $[a, b]$.
 
 
 This is precisely the kind of operation we need for image processing...
