@@ -36,80 +36,106 @@ In this
 Kahn Academy video, Sal found a closed formula for the convolution
 by solving the integral. Given that a convolution is an integral,
 you might consider that it represents the area below some curve.
-Keep that in mind =)
-
-While finding a closed formula for the convolution may be useful,
-there will be times when we may be interested
-in the value of the convolution only for certain points. That is,
-there are only a handful of points $t$ for which we are interested in
-calculating $(f \ast g)(t)$. For these cases, it may be worth not
-to use calculus (or integrals) to calculate $(f \ast g)(t)$. The
-next section will calculate the convolution using a very simple
-procedure that should shed some light on how it may be used for
-image processing.
-
-My point here is: there several ways in which you can think
-of convolutions, and it might help a lot if you allow yourself to
-switch views at different points in time.
+What curve exactly? I'll discuss more about it in the next section.
+For now, what is worth is to understand that there several ways in
+which you can think of convolutions, and it might help a lot if
+you allow yourself to switch views at different points in time.
 
 
-A continuous example
---------------------
+A concrete example
+------------------
 
-It is worth noting that very often
-the functions $f$ and $g$ for which we want to calculate a
-convolution are 0 in most of their domain. Let us define some $f$ and
-$g$ for which the integral is easy to calculate. Say:
-
-$$
-f(x) =
-\begin{cases}
-1 & \text{if } 0 \leq x \leq 1
-0 & \text{otherwise}
-\end{cases}
-$$
-
-and $g(x) = 2 * f(x)$.
-
-These 
-
-In these cases, the procedure
-presented in these images makes our life much easier:
+If you go to the
+[Wikipedia article on convolutions](https://en.wikipedia.org/wiki/Convolution),
+you may find the following two (awesome) images:
 
 ![Convolution of a function with itself.](public/convolution.gif)
 
 ![Convolution of a spiky function with a box.](public/convolution2.gif)
 
-_(These images were taken from the
-[Wikipedia article on convolutions](https://en.wikipedia.org/wiki/Convolution),
-which is another awesome resource on the topic, by the way.)_
 
 What these images are saying is that you can calculate the value of the
 convolution $f \ast g$ at the point $t$ by following a very simple
-procedure.
+procedure. I'll define two functions $f$ and $g$ to make the steps
+easier to follow. Let
 
-**First**, flip $g$ horizontally at the point $t$.
+$$
+f(x) =
+\begin{cases}
+  1 & \text{if } 0 \leq x \leq 1 \\
+  0 & \text{otherwise}
+\end{cases}
+$$
+
+and
+
+$$
+  g(x) = 2 * f(x)
+$$
+
+Here we have the two curves:
+
+![Two signals](public/grid1.gif)
+
+
+**First**: flip $g$ horizontally at the point $t$.
 Let's give the flipped $g$ a name, say $g'$. (if you don't flip $g$,
 then what you are calculating has actually the name of "correlation",
 and is simply another typical operation in signal processing.)
 
-**Second** shift $g'$ horizontally by $t$ units. If $t$ is
+![Flipped signal](public/grid2.gif)
+
+
+**Second**: shift $g'$ horizontally by $t$ units. If $t$ is
 positive, then $g'$ will be shifted to the right; otherwise, it will
 be shifted to the left.
 
-**Third**: it may be the case now that the non-zero parts of $f$ and
-the shifted version of $g'$ are intersecting ($g'$ and $f$ are
-non-zero for the same $x$ values). In that case, 
+![Shifted signal](public/grid3.gif)
 
-flipping $g$ horizontally (if you don't flip, then it
-becomes a "correlation", another common operation in signal processing)
-and calculating, for each point $t$, the area of intersection between
-$f$ and a  $\hat{g}$, where $\hat{g}$ is 
+**Third**: this is the step where the problems arise.
+Now what you want is actually multiply the two
+curves are each point between $-\infty$ and $+\infty$ and calculate the
+area below the curve that this multiplication will form. But there are
+two points that could make your life easier. The first of them is that
+it is worth noting that very often
+the functions $f$ and $g$ for which we want to calculate a
+convolution are 0 in most of their domain.
+Therefore it may be the case now that the non-zero parts of $f$ and
+the shifted version of $g'$ do not even intersect, or only intersect
+in some places (by "intersection", I mean that $g'$ and $f$ are non-zero
+for the same $x$ inputs). Let's say they intersect in an
+interval $[a, b]$. Now it could still be a challenge to calculate the
+integral of the shifted $g'$ and "f" in that interval.
+
+![Calculate area below curve](public/grid4.gif)
+
+(While searching for a way to understand this procedure, I came across
+[this very nice demo](http://www.fit.vutbr.cz/study/courses/ISS/public/demos/conv/).
+In it you can define your own functions and play arround to find out
+how the convolution is going to be.)
+
+Now, the problem with
+continuous convolutions is that we would have to actually calculate
+an integral. But what if our function were actually "discrete"?
+
+![Calculate sum of elements below curve](public/grid5.gif)
+
+All the concepts we have discussed so far would follow the same logic
+for the discrete case. Now,
+instead of an integral we now have a sum. So, given the interval
+$[a, b]$, we could calculate the convolution as
+
+$$
+  \sum^b_a{f(i) * g(j)}
+$$
 
 
-Basically, if you have a function $f$ and another function $g$, then
-you can calculate the convolution $f \star g$ following this
-procedure:
+This is precisely the kind of operation we need for image processing...
+
+
+2D discrete convolutions
+------------------------
+
 
 
 
