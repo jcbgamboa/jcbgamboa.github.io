@@ -1,7 +1,7 @@
 ---
 use_math: true
 layout: post
-title: A Guide to Convolutions
+title: What are Convolutions?
 ---
 
 (post still under construction :-P )
@@ -25,9 +25,9 @@ In the sections that follow, I'll introduce convolutions (actually,
 I'll let Kahn Academy do that for me), then introduce a procedure
 to calculate it, motivate a discussion about discrete convolutions,
 show why it makes sense to represent the convolving functions as
-vectors, extend the definition to the 2D space, and finally make
-the connection with Convolutions Neural Networks clear. Uff... it is
-a lot of work. Let us start =)
+vectors and extend the definition to the 2D space. The next blog post
+will explain why these are useful for signal processing and what is
+their relation with Convolutional Neural Networks.
 
 
 Convolutions
@@ -79,7 +79,7 @@ $$
 and
 
 $$
-  g(x) = 2 * f(x)
+  g(x) = 2 \times f(x)
 $$
 
 Here we have the two curves:
@@ -137,7 +137,7 @@ instead of an integral we now have a sum. So, given the interval
 $[a, b]$, we could calculate the convolution as
 
 $$
-  (f \ast g)(t) = \sum^b_{i=a}{f(i) * g_{shifted}'(i)}
+  (f \ast g)(t) = \sum^b_{i=a}{f(i) \times g_{shifted}'(i)}
 $$
 
 And fortunately this sum is easy to calculate.
@@ -190,7 +190,7 @@ $$
  * Multiply all elements position by position and sum them all.
 
 $$
-  (f \ast g)(t) = 1 * 2 + 1 * 2 = 4
+  (f \ast g)(t) = (1 \times 2) + (1 \times 2) = 4
 $$
 
 You might have noticed how these operations may resemble dot-products.
@@ -206,14 +206,20 @@ different values of $t$, you could just keep shifting the vector $g$.
 
 $$
 \begin{align*}
-t &= 0 & t &= 1 & \text{All } & \text{values of } t \\
-
-f &= [\dots 0, 0, \textbf{1}, \textbf{1}, \textbf{1}, \textbf{1}, 0, \dots] & f &= [\dots 0, 0, 1, \textbf{1}, \textbf{1}, \textbf{1}, 0, 0, \dots] & f &= [\dots 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
-
-g &= [\dots 0, 0, \textbf{2}, \textbf{2}, \textbf{2}, \textbf{2}, 0, \dots] & g &= [\dots 0, 0, 0, \textbf{2}, \textbf{2}, \textbf{2}, 2, 0, \dots] & g &= [\dots 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
-
-(f \ast g)(t) &= [1, 1, 1, 1] \bullet [2, 2, 2, 2] = 8 & (f \ast g)(t) &= [1, 1, 1] \bullet [2, 2, 2] = 6 & (f \ast g)(t) &= [\dots 4, 6, 8, 6, 4, 2, 0, 0, \dots]
-
+\text{When } t &= 0 \\
+f &= [\dots 0, 0, \textbf{1}, \textbf{1}, \textbf{1}, \textbf{1}, 0, \dots] \\
+g &= [\dots 0, 0, \textbf{2}, \textbf{2}, \textbf{2}, \textbf{2}, 0, \dots] \\
+(f \ast g)(t) &= [1, 1, 1, 1] \bullet [2, 2, 2, 2] = 8 \\
+\\
+\text{When } t &= 1 \\
+f &= [\dots 0, 0, 1, \textbf{1}, \textbf{1}, \textbf{1}, 0, 0, \dots] \\
+g &= [\dots 0, 0, 0, \textbf{2}, \textbf{2}, \textbf{2}, 2, 0, \dots] \\
+(f \ast g)(t) &= [1, 1, 1] \bullet [2, 2, 2] = 6 \\
+\\
+\text{And, } & \text{finally, if you consider all values of } t \\
+f &= [\dots 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, \dots] \\
+g &= [\dots 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, \dots] \\
+(f \ast g)(t) &= [\dots 0, 2, 4, 6, 8, 6, 4, 2, 0, 0, \dots] \\
 \end{align*}
 $$
 
@@ -221,18 +227,49 @@ $$
 Unfortunately, these are still vectors with an infinite number of
 dimensions, which are hard to store in our limited storage computers.
 It is worth noting that very often the functions $f$ and $g$ for which
-we want to calculate a convolution are 0 in most of their domain.
+we want to calculate a convolution are 0 most of the time.
 Since we know that the result of the convolution in these regions
 will be zero, we can just drop all of the zeros:
 
 $$
-f &= [0, 0, 0, 1, 1, 1, 1, 0, 0] \\
-g &= [0, 0, 0, 2, 2, 2, 2, 0, 0] \\
-(f \ast g) &= [2, 4, 6, 8, 6, 4, 2, 0, 0] \\
+\begin{align*}
+f &= [0, 0, 0, 0, 1, 1, 1, 1, 0, 0] \\
+g &= [0, 0, 0, 0, 2, 2, 2, 2, 0, 0] \\
+(f \ast g) &= [0, 2, 4, 6, 8, 6, 4, 2, 0, 0] \\
+\end{align*}
 $$
 _(As you can see, I kept some of the zeros. I could have removed them. It was my choice)_
 
+And congratulations, we just arrived in a very compact representation
+of our functions.
 
+**Note:** The entire discussion so far supposed that we would keep
+$f$ still and always transform $g$ according to our three steps to
+calculate the convolutions. It turns out that convolutions are
+commutative, and therefore the entire procedure would have also
+worked by holding $g$ still and changing $f$ in the same way.
+
+
+But what does all of this mean?
+-------------------------------
+
+When I started talking about convolutions, I said that they are used
+a lot in the context of signal processing. It might be a good idea to
+forget that these vectors are functions for a while and consider them
+signals.
+([this video](https://www.youtube.com/watch?v=TgKwz5Ikpc8)
+might help to convince you that this is a sensible idea.)
+In that case, what a convolution is doing is taking two
+signals as input and generating a new one based on those two. How
+the new signal looks like depends on where both signals are non-zero.
+In the next blog post you'll see how this can be used in meaningful
+ways, like finding borders in an image, blurring an image, or even
+shifting a signal in a certain direction.
+
+Most importantly, convolutions are a very simple operation (composed
+of sums and multiplications that can be done parallely), which can
+be easily implemented in hardware. They are a great tool to have in
+hand when solving difficult problems.
 
 
 2D Convolutions
@@ -244,7 +281,7 @@ Let us skip all the discussion about continuous functions and vectors
 with infinitely many elements and consider our current state:
 functions $f$ and $g$ are represented as small vectors, and we want to
 calculate the convolution of those two functions (vectors) at any
-point $t$. If we now consider $f$ and $g$ to be 2D, then we can
+point $t$. If we now define new $f$ and $g$ in a 2D space, then we can
 represent them as matrices. For example, if we now redefine $f$ as
 
 $$
@@ -260,26 +297,31 @@ a matrix that looks something like:
 
 $$
 f = 
-\begin{matrix}
+\begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 \\
 0 & 1 & 1 & 1 & 1 & 0 \\
 0 & 1 & 1 & 1 & 1 & 0 \\
 0 & 1 & 1 & 1 & 1 & 0 \\
 0 & 1 & 1 & 1 & 1 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 \\
-\end{matrix}
+\end{bmatrix}
 $$
+
+_(Do not forget: I was the one who decided to keep a border with zeros.
+I could have left many more columns and rows with zeros in the borders.
+This may seem irrelevant for now, but will be useful when we discuss
+kernels in the next blog post.)_
 
 Let us define a new $g$, that after discretization looks like the
 following:
 
 $$
 g = 
-\begin{matrix}
+\begin{bmatrix}
 0 & 0   & 0 \\
 0 & 0.5 & 0 \\
 0 & 0   & 0 \\
-\end{matrix}
+\end{bmatrix}
 $$
 
 How would the convolution then be calculated? Same steps:
@@ -293,9 +335,27 @@ How would the convolution then be calculated? Same steps:
 
   * Multiply the aligned elements and sum their result.
 
-
-You might have noticed how $f$ always stayed still while $g$ moved
-around depending on the value of $t$. 
+Let's do some examples.
 
 
+
+
+Conclusions
+-----------
+
+In this blog post I expect given you a very intuitive understanding
+of how convolutions are calculated and a notion of what they are
+doing. It should help you to make the connection between all those
+integrals you find in Kahn Academy or Wikipedia and
+the discrete convolution operation you see in some Neural Networks.
+If none of this still happened, the examples of the next blog post
+will definitely help you to realize what is going on.
+
+I had not planned for this blog post to become so long. In the next
+blog post I'll show applications of convolutions from the image
+processing field, and how they connect to Convolutional Neural
+Networks. As a bonus, I want to show a very elegant application
+of convolutions from the Neural Turing Machines.
+
+Stay tuned =)
 
