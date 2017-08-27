@@ -406,32 +406,109 @@ help us find out. I'll call this "the border problem" and refer to
 it in the next blog post. For now, I'll just align with the points
 "we know" and forget about any zeros that might lurk beyond the
 border of the matrix representing $f$. This will give us a so-called
-"valid" convolution:
+"valid" convolution.
+
+Finally, we need to sum the multiplications:
 
 $$
+\begin{multline}
 (f \ast g)(0,0) =
-\begin{bmatrix}
-0 & 0 & 4 \\
-2 & 1 & 0 \\
-0 & 3 & 0
-\end{bmatrix}
-\ast
 \begin{bmatrix}
 0 & 3 & 6 \\
 3 & 6 & 3 \\
 6 & 3 & 6
 \end{bmatrix}
-=
-\sum_{i,j}{f_{i,j} \times g_{i,j}}
-= (0 \times 0) + (0 \times 3) + (4 \times 6) + (2 \times 3) + (1 \times 6) + (0 \times 3) + (0 \times 6) + (3 \times 3) + (0 \times 6)
+\ast
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0
+\end{bmatrix}
+= \\
+\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
+= (0 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 1) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (6 \times 0) = 45
+\begin{multline}
 $$
 
+Easy, right? Now to calculate $f \ast g)(1,0)$ we just move the
+matrix $g$ to the right, aligning it with the next submatrix of $f$:
+
+$$
+\begin{multline}
+(f \ast g)(1,0) =
+\begin{bmatrix}
+3 & 6 & 3 \\
+6 & 3 & 6 \\
+3 & 6 & 3
+\end{bmatrix}
+\ast
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0
+\end{bmatrix}
+= \\
+\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
+= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) = 45
+\begin{multline}
+$$
+
+And the other two elements are calculated the same way:
+
+$$
+\begin{multline}
+(f \ast g)(0,1) =
+\begin{bmatrix}
+3 & 6 & 3 \\
+6 & 3 & 6 \\
+3 & 6 & 3 \\
+\end{bmatrix}
+\ast
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0
+\end{bmatrix}
+= \\
+\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
+= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) = 45
+\begin{multline}
+$$
+
+$$
+\begin{multline}
+(f \ast g)(1,1) =
+\begin{bmatrix}
+6 & 3 & 6 \\
+3 & 6 & 3 \\
+6 & 3 & 0 \\
+\end{bmatrix}
+\ast
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0
+\end{bmatrix}
+= \\
+\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
+= (6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 6) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) = 45
+\begin{multline}
+$$
+
+Resulting in the final matrix:
+
+$$(f \ast g) =
+\begin{bmatrix}
+45 & 45 \\
+45 & 45 \\
+\end{bmatrix}
 
 
 Conclusions
 -----------
 
-In this blog post I expect given you a very intuitive understanding
+In this blog post I expect to have given you a very intuitive
+understanding
 of how convolutions are calculated and a notion of what they are
 doing. It should help you to make the connection between all those
 integrals you find in Kahn Academy or Wikipedia and
