@@ -56,9 +56,9 @@ If you go to the
 [Wikipedia article on convolutions](https://en.wikipedia.org/wiki/Convolution),
 you may find the following two (awesome) images:
 
-![Convolution of a function with itself.](public/convolution.gif)
+![Convolution of a function with itself.](/public/convolution.gif)
 
-![Convolution of a spiky function with a box.](public/convolution2.gif)
+![Convolution of a spiky function with a box.](/public/convolution2.gif)
 
 
 What these images are saying is that you can calculate the value of the
@@ -82,7 +82,7 @@ $$
 
 Here we have the two curves:
 
-![Two signals](public/convolution_explained1.png)
+![Two signals](/public/convolution_explained1.png)
 
 _(I used Google Spreadsheets to do this, so you'll notice the
 lines are not exact, but you should be able to get the idea)_
@@ -94,7 +94,7 @@ then what you are calculating has actually the name of "correlation",
 and is simply another typical operation in signal processing.).
 
 
-![Flipped signal](public/convolution_explained2.png)
+![Flipped signal](/public/convolution_explained2.png)
 
 
 **Second**: shift $g'$ horizontally by $t$ units. If $t$ is
@@ -118,7 +118,7 @@ integral of the multiplication of $f$ and $g_{shifted}'$ inside that
 interval. Now it could still be a challenge to calculate the
 integral of the $g_{shifted}'$ and "f" in that interval.
 
-![Calculate area below curve](public/convolution_explained4.png)
+![Calculate area below curve](/public/convolution_explained4.png)
 
 (While searching for a way to understand this procedure, I came across
 [this very nice demo](http://www.fit.vutbr.cz/study/courses/ISS/public/demos/conv/).
@@ -160,7 +160,7 @@ to understand. So, to make things simpler, in all the text that
 follows I'll use steps of 0.25 instead. The image below shows how the
 original functions $f$ and $g$ would look like discretized this way.
 
-![Discretized curves with steps of 0.25](public/convolution_explained6.png)
+![Discretized curves with steps of 0.25](/public/convolution_explained6.png)
 
 
 1D discrete convolutions
@@ -422,7 +422,6 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0 \\
 \end{bmatrix} \\
-&= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (0 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 1) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (6 \times 0) \\
 &= 45
 \end{split}
@@ -445,7 +444,6 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0 \\
 \end{bmatrix} \\
-&= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
 &= 45
 \end{split}
@@ -467,7 +465,6 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0 \\
 \end{bmatrix} \\
-&= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
 &= 45
 \end{split}
@@ -487,7 +484,6 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0
 \end{bmatrix} \\
-&= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 6) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) \\
 &= 45
 \end{split}
