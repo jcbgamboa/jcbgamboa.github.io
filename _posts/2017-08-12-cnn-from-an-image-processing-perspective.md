@@ -84,7 +84,10 @@ $$
 
 Here we have the two curves:
 
-![Two signals](public/grid1.gif)
+![Two signals](public/convolution_explained1.png)
+
+_(I used Google Spreadsheets to do this, so you'll notice the
+lines are not exact, but you should be able to get the idea)_
 
 
 **First**: flip $g$ horizontally.
@@ -92,7 +95,7 @@ Let's give the flipped $g$ a name, say $g'$. (if you don't flip $g$,
 then what you are calculating has actually the name of "correlation",
 and is simply another typical operation in signal processing.)
 
-![Flipped signal](public/grid2.gif)
+![Flipped signal](public/convolution_explained2.png)
 
 
 **Second**: shift $g'$ horizontally by $t$ units. If $t$ is
