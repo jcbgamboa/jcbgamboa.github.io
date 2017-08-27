@@ -90,8 +90,7 @@ _(I used Google Spreadsheets to do this, so you'll notice the
 lines are not exact, but you should be able to get the idea)_
 
 
-**First**: flip $g$ horizontally at the point $t$. For our example,
-let's say that $t=0.3$.
+**First**: flip $g$ horizontally (i.e., $g(x) <- g(-x)$).
 Let's give the flipped $g$ a name, say $g'$. (if you don't flip $g$,
 then what you are calculating has actually the name of "correlation",
 and is simply another typical operation in signal processing.).
@@ -102,7 +101,8 @@ and is simply another typical operation in signal processing.).
 
 **Second**: shift $g'$ horizontally by $t$ units. If $t$ is
 positive, then $g'$ will be shifted to the right; otherwise, it will
-be shifted to the left. I'll call this function $g_{shifted}'$
+be shifted to the left. For our example, let's say that $t=0.3$.
+I'll call this function $g_{shifted}'$
 
 ![Shifted signal](public/convolution_explained3.png)
 
@@ -350,8 +350,81 @@ How would the convolution then be calculated? Same steps:
 
   * Multiply the aligned elements and sum their result.
 
-Let's do some examples.
 
+### An example calculated by hand
+
+Before concluding this blog post, I want to calculate an example by
+hand. If you did not understand everything so far, this should
+clarify whatever is missing. Let's define two new functions $f$ and
+$g$, that, after discretization and "vectorization", become the
+following matrices:
+
+$$
+f = 
+\begin{bmatrix}
+0 & 3 & 6 & 3 \\
+3 & 6 & 3 & 6 \\
+6 & 3 & 6 & 3 \\
+3 & 6 & 3 & 0 \\
+\end{bmatrix}
+$$
+
+$$
+g =
+\begin{bmatrix}
+0 & 3 & 0 \\
+0 & 1 & 2 \\
+4 & 0 & 0 \\
+\end{bmatrix}
+$$
+
+If you think of $f$ as an image, you might interpret it as two
+diagonal lines (the values with 6) surrounded by some "shade" (the
+values with 3). The function $g$, on the other hand, is hard to
+interpret. I chose a very asymmetric matrix to show how the
+flipping (the first step in our calculation) affects the final values
+in $g$.
+
+Let's calculate $(f \ast g)(0,0)$. First is to flip $g$ to create
+$g'$:
+
+$$
+g' =
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0 \\
+\end{bmatrix}
+$$
+
+Then we align the matrix $g'$ with the part of $f$ that corresponds
+to position $(0,0)$. This
+part might cause some confusion. Where exactly is $(0,0)$? There is
+no actual "right answer" to where this point should be after
+discretization, and we don't have the original function formula to
+help us find out. I'll call this "the border problem" and refer to
+it in the next blog post. For now, I'll just align with the points
+"we know" and forget about any zeros that might lurk beyond the
+border of the matrix representing $f$. This will give us a so-called
+"valid" convolution:
+
+$$
+(f \ast g)(0,0) =
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0
+\end{bmatrix}
+\ast
+\begin{bmatrix}
+0 & 3 & 6 \\
+3 & 6 & 3 \\
+6 & 3 & 6
+\end{bmatrix}
+=
+\sum_{i,j}{f_{i,j} \times g_{i,j}}
+= (0 \times 0) + (0 \times 3) + (4 \times 6) + (2 \times 3) + (1 \times 6) + (0 \times 3) + (0 \times 6) + (3 \times 3) + (0 \times 6)
+$$
 
 
 
