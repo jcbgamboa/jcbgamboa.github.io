@@ -421,7 +421,7 @@ $$
 0 & 0 & 4 \\
 2 & 1 & 0 \\
 0 & 3 & 0 \\
-\end{bmatrix}
+\end{bmatrix} \\
 &= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (0 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 1) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (6 \times 0) \\
 &= 45
@@ -444,7 +444,7 @@ $$
 0 & 0 & 4 \\
 2 & 1 & 0 \\
 0 & 3 & 0 \\
-\end{bmatrix}
+\end{bmatrix} \\
 &= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
 &= 45
@@ -466,7 +466,7 @@ $$
 0 & 0 & 4 \\
 2 & 1 & 0 \\
 0 & 3 & 0 \\
-\end{bmatrix}
+\end{bmatrix} \\
 &= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
 &= 45
@@ -486,7 +486,7 @@ $$
 0 & 0 & 4 \\
 2 & 1 & 0 \\
 0 & 3 & 0
-\end{bmatrix}
+\end{bmatrix} \\
 &= \sum_{i,j}{f_{i,j} \times g_{i,j}} \\
 &= (6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 6) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) \\
 &= 45
@@ -500,6 +500,7 @@ $$(f \ast g) =
 45 & 45 \\
 45 & 45 \\
 \end{bmatrix}
+$$
 
 
 Conclusions
