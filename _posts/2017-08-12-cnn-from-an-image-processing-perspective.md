@@ -4,8 +4,6 @@ layout: post
 title: What are Convolutions?
 ---
 
-(post still under construction :-P )
-
 For quite some time already I have been wanting to write this blog
 post. A little more than one year ago I got acquainted to
 Convolutional Neural Networks, and it didn't immediately strike me why
