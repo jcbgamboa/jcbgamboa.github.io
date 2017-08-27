@@ -414,18 +414,19 @@ $$
 \begin{bmatrix}
 0 & 3 & 6 \\
 3 & 6 & 3 \\
-6 & 3 & 6
+6 & 3 & 6 \\
 \end{bmatrix}
 \ast
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
-0 & 3 & 0
+0 & 3 & 0 \\
 \end{bmatrix}
 = \\
-\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
-= (0 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 1) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (6 \times 0) = 45
-\begin{multline}
+\sum_{i,j}{f_{i,j} \times g_{i,j}} = \\
+(0 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 1) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (6 \times 0) = \\
+45
+\end{multline}
 $$
 
 Easy, right? Now to calculate $f \ast g)(1,0)$ we just move the
@@ -437,18 +438,19 @@ $$
 \begin{bmatrix}
 3 & 6 & 3 \\
 6 & 3 & 6 \\
-3 & 6 & 3
+3 & 6 & 3 \\
 \end{bmatrix}
 \ast
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
-0 & 3 & 0
+0 & 3 & 0 \\
 \end{bmatrix}
 = \\
-\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
-= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) = 45
-\begin{multline}
+\sum_{i,j}{f_{i,j} \times g_{i,j}} = \\
+(3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) = \\
+45
+\end{multline}
 $$
 
 And the other two elements are calculated the same way:
@@ -465,11 +467,12 @@ $$
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
-0 & 3 & 0
+0 & 3 & 0 \\
 \end{bmatrix}
 = \\
-\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
-= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) = 45
+\sum_{i,j}{f_{i,j} \times g_{i,j}} = \\
+(3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) = \\
+45
 \begin{multline}
 $$
 
@@ -488,9 +491,10 @@ $$
 0 & 3 & 0
 \end{bmatrix}
 = \\
-\sum_{i,j}{f_{i,j} \times g_{i,j}} \\
-= (6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 6) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) = 45
-\begin{multline}
+\sum_{i,j}{f_{i,j} \times g_{i,j}} = \\
+(6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 6) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) = \\
+45
+\end{multline}
 $$
 
 Resulting in the final matrix:
