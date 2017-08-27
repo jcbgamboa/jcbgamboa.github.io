@@ -156,11 +156,21 @@ and I won't go into many details here. You can just assume that the
 discretized version of the signal is a sum of _dirac delta
 functions_.
 
+In the example above I discretized the functions using 1 point for
+each 0.05 step in $x$. This would make the discussion below very hard
+to understand. So, to make things simpler, in all the text that
+follows I'll use steps of 0.25 instead. The image below shows how the
+original functions $f$ and $g$ would look like discretized this way.
+
+![Discretized curves with steps of 0.25](public/convolution_explained6.png)
+
+
 1D discrete convolutions
 ------------------------
 
 It turns out that the functions $f$ and $g$ used in convolutions are
-in reality mostly composed by zeros (as assumed before). This allows
+in reality most of the times composed almost entirely by zeros (as
+assumed before). This allows
 for a much more compact representation of the functions as a vector of
 values. For example, $f$ and $g$ could be represented as:
 
