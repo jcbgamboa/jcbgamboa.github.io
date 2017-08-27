@@ -90,10 +90,12 @@ _(I used Google Spreadsheets to do this, so you'll notice the
 lines are not exact, but you should be able to get the idea)_
 
 
-**First**: flip $g$ horizontally.
+**First**: flip $g$ horizontally at the point $t$. For our example,
+let's say that $t=0.3$.
 Let's give the flipped $g$ a name, say $g'$. (if you don't flip $g$,
 then what you are calculating has actually the name of "correlation",
-and is simply another typical operation in signal processing.)
+and is simply another typical operation in signal processing.).
+
 
 ![Flipped signal](public/convolution_explained2.png)
 
@@ -102,7 +104,7 @@ and is simply another typical operation in signal processing.)
 positive, then $g'$ will be shifted to the right; otherwise, it will
 be shifted to the left. I'll call this function $g_{shifted}'$
 
-![Shifted signal](public/grid3.gif)
+![Shifted signal](public/convolution_explained3.png)
 
 **Third**: this is the step where the problems arise.
 Now what you want is actually multiply the two
@@ -118,7 +120,7 @@ integral of the multiplication of $f$ and $g_{shifted}'$ inside that
 interval. Now it could still be a challenge to calculate the
 integral of the $g_{shifted}'$ and "f" in that interval.
 
-![Calculate area below curve](public/grid4.gif)
+![Calculate area below curve](public/convolution_explained4.png)
 
 (While searching for a way to understand this procedure, I came across
 [this very nice demo](http://www.fit.vutbr.cz/study/courses/ISS/public/demos/conv/).
