@@ -411,7 +411,7 @@ the results. To make things clearer, if $A$ and $B$ denoted the two
 matrices of same size that we now have, then what we want to do is:
 
 $$
-A \odot B = \sum_{i,j}{f_{i,j} \times g_{i,j}
+A \odot B = \sum_{i,j}{f_{i,j} \times g_{i,j}}
 $$
 
 Where I am representing this "pointwise multiplication followed by
