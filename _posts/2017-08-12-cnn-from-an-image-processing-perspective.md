@@ -425,7 +425,7 @@ $$
 3 & 6 & 3 \\
 6 & 3 & 6 \\
 \end{bmatrix}
-\star
+\odot
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
@@ -449,7 +449,7 @@ $$
 6 & 3 & 6 \\
 3 & 6 & 3 \\
 \end{bmatrix}
-\star
+\odot
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
@@ -470,7 +470,7 @@ $$
 6 & 3 & 6 \\
 3 & 6 & 3 \\
 \end{bmatrix}
-\star
+\odot
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
@@ -489,7 +489,7 @@ $$
 3 & 6 & 3 \\
 6 & 3 & 0 \\
 \end{bmatrix}
-\star
+\odot
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
