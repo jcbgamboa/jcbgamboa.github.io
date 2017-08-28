@@ -163,15 +163,71 @@ With this, you should see the following image:
 
 ![Lenna after edge detection](/public/lenna_edges.bmp)
 
+Nice, right?
 
 ### The Border Problem
 
+If you look carefully at this new image, you'll see that I'm not
+running `run_kernel()` in the last pixels (and then you'll find some
+columns of zero pixels at the right of the image, as well as some
+some rows at the bottom). This has to do with what I called the "Border
+Problem" in my last post.
 
+It is actually very unclear what should be done in the edges of the
+Image we are trying to process. The way I have been doing so far, if I
+calculate a convolution between two $3 \times 3$ matrices, it will
+give me only one number. It would be nice if I could find ways to get
+a result that had the same size of the input image.
 
+For this reason, you will see three types of convolutions:
+
+ * **Valid**: This is the way I have been doing it so far. We don't
+	assume any information apart from what we have.
+
+ * **Full**: In this case, we assume there are lots of zeros beyond
+	that the edge of the original image. This way, if we were
+	given the image $f$ below, then it would be "transformed" into
+	the $f_{transformed}$ below before convolving. The number of
+	new rows/columns introduced depends on the size of the kernel.
+	This makes sense from the perspective of signal processing I
+	described in my previous post.
+
+$$
+f = 
+\begin{bmatrix}
+0 & 3 & 6 & 3 \\
+3 & 6 & 3 & 6 \\
+6 & 3 & 6 & 3 \\
+3 & 6 & 3 & 0 \\
+\end{bmatrix}
+$$
+
+$$
+f_{transformed} =
+0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
+0 & 0 & 0 & 3 & 6 & 3 0 & 0 \\
+0 & 0 & 3 & 6 & 3 & 6 0 & 0 \\
+0 & 0 & 6 & 3 & 6 & 3 0 & 0 \\
+0 & 0 & 3 & 6 & 3 & 0 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
+$$
+
+_(if this is not clear enough, you are welcome to take a look at
+[this amazing explanation I found in Stack Overflow](https://stackoverflow.com/a/37146742/1360979))_
+
+ * **Same**: This is a little trickier. It does assume zeros around
+	the image, but only as much as needed to return an output that
+	has the exact same size as the input image. I tend to find it
+	hard to visualize, but I found that
+	[this image](http://www.johnloomis.org/ece563/notes/filter/conv/convolution.html)
+	helped a lot.
 
 
 Relation to Convolutional Neural Networks
 -----------------------------------------
+
 
 
 
