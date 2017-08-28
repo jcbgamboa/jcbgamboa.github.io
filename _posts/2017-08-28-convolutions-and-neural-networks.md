@@ -77,7 +77,7 @@ some Python code should make things clearer. Let's say we want to
 find the borders of the following image of Lenna
 [Lena](https://en.wikipedia.org/wiki/Lenna):
 
-![Convolution of a function with itself.](/public/lenna.bmp)
+![Lenna original](/public/lenna.bmp)
 
 The first thing to do is to load the image:
 
@@ -93,6 +93,9 @@ with the kernel:
 # import numpy as np
 
 def convolve(image, kernel):
+	# Flips the kernel both left-to-right and up-to-down
+	kernel = np.fliplr(np.flipud(kernel))
+
 	# Transforms the image into something that numpy can process
 	image_array = np.array(image)
 
@@ -102,9 +105,9 @@ def convolve(image, kernel):
 	# Convolve
 	for i in range(image_array.shape[0] - kernel.shape[0]):
 		for j in range(image_array.shape[1] - kernel.shape[1]):
-			# run_mask will perform the pointwise multiplication
+			# run_kernel will perform the pointwise multiplication
 			# followed by sum
-			new_image_array[i][j] = run_mask(image_array, kernel, i, j)
+			new_image_array[i][j] = run_kernel(image_array, kernel, i, j)
 
 	# Creates a new Image object
 	new_image = Image.fromarray(new_image_array)
@@ -120,7 +123,45 @@ has a function that performs the convolution anyway), but I wanted
 to show how the operations we saw in the last blog post can be easily
 translated into some piece of code.
 
-Now we need to define that `run_mask()` function. It 
+Now we need to define that `run_kernel()` function. It calculates
+$\odot$ operation between the part of the image that we are interested
+in and the (already flipped) kernel. This is as simple as:
+
+```python
+def run_kernel(image, kernel, pos_x, pos_y):
+	ret = 0
+	for i in range(kernel.shape[0]):
+		for j in range(kernel.shape[1]):
+			ret += image[pos_x + i][pos_y + j] * kernel[i][j]
+
+	return ret
+```
+
+Done! It is that simple!
+
+What we are missing is just the right kernel. If you look at the
+Wikipedia page you'll see that there are several kernels usable for
+Edge detection. I'll use the third one:
+
+$$
+kernel =
+\begin{bmatrix}
+0 & 0 & 4 \\
+2 & 1 & 0 \\
+0 & 3 & 0
+\end{bmatrix}
+$$
+
+In Python:
+
+```python
+new_image_array, new_image = convolve(img, np.array([[-1,-1,-1],[-1,8,-1],[-1,-1,-1]]))
+new_image.show()
+```
+
+With this, you should see the following image:
+
+![Lenna after edge detection](/public/lenna_edges.bmp)
 
 
 ### The Border Problem
