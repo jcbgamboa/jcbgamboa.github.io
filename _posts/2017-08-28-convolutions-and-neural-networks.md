@@ -146,9 +146,9 @@ Edge detection. I'll use the third one:
 $$
 kernel =
 \begin{bmatrix}
-0 & 0 & 4 \\
-2 & 1 & 0 \\
-0 & 3 & 0
+-1 & -1 & -1 \\
+-1 &  8 & -1 \\
+-1 & -1 & -1
 \end{bmatrix}
 $$
 
