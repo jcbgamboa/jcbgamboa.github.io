@@ -90,7 +90,7 @@ lines are not exact, but you should be able to get the idea)_
 
 **First**: flip $g$ horizontally (i.e., $g(x) <- g(-x)$).
 Let's give the flipped $g$ a name, say $g'$. (if you don't flip $g$,
-then what you are calculating has actually the name of "correlation",
+then what you are calculating has actually the name of "cross-correlation",
 and is simply another typical operation in signal processing.).
 
 
@@ -406,7 +406,16 @@ it in the next blog post. For now, I'll just align with the points
 border of the matrix representing $f$. This will give us a so-called
 "valid" convolution.
 
-Finally, we need to sum the multiplications:
+Finally, we need to multiply each element pointwise and sum all of
+the results. To make things clearer, if $A$ and $B$ denoted the two
+matrices of same size that we now have, then what we want to do is:
+
+$$
+A \odot B = \sum_{i,j}{f_{i,j} \times g_{i,j}
+$$
+
+Where I am representing this "pointwise multiplication followed by
+sum" by the operator $\odot$. In our specific case, we get:
 
 $$
 \begin{split}
@@ -416,7 +425,7 @@ $$
 3 & 6 & 3 \\
 6 & 3 & 6 \\
 \end{bmatrix}
-\ast
+\star
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
@@ -427,7 +436,9 @@ $$
 \end{split}
 $$
 
-Easy, right? Now to calculate $(f \ast g)(1,0)$ we just move the
+Easy, right?
+
+Now to calculate $(f \ast g)(1,0)$ we just move the
 matrix $g$ to the right, aligning it with the next submatrix of $f$:
 
 $$
@@ -438,7 +449,7 @@ $$
 6 & 3 & 6 \\
 3 & 6 & 3 \\
 \end{bmatrix}
-\ast
+\star
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
@@ -459,7 +470,7 @@ $$
 6 & 3 & 6 \\
 3 & 6 & 3 \\
 \end{bmatrix}
-\ast
+\star
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
@@ -478,7 +489,7 @@ $$
 3 & 6 & 3 \\
 6 & 3 & 0 \\
 \end{bmatrix}
-\ast
+\star
 \begin{bmatrix}
 0 & 0 & 4 \\
 2 & 1 & 0 \\
