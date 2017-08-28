@@ -191,6 +191,8 @@ For this reason, you will see three types of convolutions:
 	new rows/columns introduced depends on the size of the kernel.
 	This makes sense from the perspective of signal processing I
 	described in my previous post.
+	_(if this is not clear enough, you are welcome to take a look at
+[this amazing explanation I found in Stack Overflow](https://stackoverflow.com/a/37146742/1360979))_
 
 $$
 f = 
@@ -204,6 +206,7 @@ $$
 
 $$
 f_{transformed} =
+\begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
 0 & 0 & 0 & 3 & 6 & 3 0 & 0 \\
@@ -212,10 +215,9 @@ f_{transformed} =
 0 & 0 & 3 & 6 & 3 & 0 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
+\end{bmatrix}
 $$
 
-_(if this is not clear enough, you are welcome to take a look at
-[this amazing explanation I found in Stack Overflow](https://stackoverflow.com/a/37146742/1360979))_
 
  * **Same**: This is a little trickier. It does assume zeros around
 	the image, but only as much as needed to return an output that
