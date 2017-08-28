@@ -132,7 +132,7 @@ Fortunately for us, most applications on Image Processing require
 discrete signals, and for our purposes it would be perfectly ok to
 discretize these continuous signals.
 
-![Calculate sum of elements below curve](public/convolution_explained5.png)
+![Calculate sum of elements below curve](/public/convolution_explained5.png)
 
 After discretization, All the concepts we have discussed so far would
 follow the same logic. Now,

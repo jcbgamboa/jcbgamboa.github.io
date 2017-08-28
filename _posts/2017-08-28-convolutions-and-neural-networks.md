@@ -207,14 +207,14 @@ $$
 $$
 f_{transformed} =
 \begin{bmatrix}
-0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
-0 & 0 & 0 & 3 & 6 & 3 0 & 0 \\
-0 & 0 & 3 & 6 & 3 & 6 0 & 0 \\
-0 & 0 & 6 & 3 & 6 & 3 0 & 0 \\
-0 & 0 & 3 & 6 & 3 & 0 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 3 & 6 & 3 & 0 & 0 \\
+0 & 0 & 3 & 6 & 3 & 6 & 0 & 0 \\
+0 & 0 & 6 & 3 & 6 & 3 & 0 & 0 \\
+0 & 0 & 3 & 6 & 3 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{bmatrix}
 $$
 
@@ -230,7 +230,27 @@ $$
 Relation to Convolutional Neural Networks
 -----------------------------------------
 
+Ok... so I think we covered everything there was to cover about
+Convolutions. Now I just need to answer: how do they relate to CNNs?
 
+Remember how the convolutions are being calculated: for a given point
+in time, we multiply the values pointwise and then sum them all.
+Now... remember how the connections of the Convolutional Layer are
+organized:
+
+![One neuron](/public/...)
+
+So, if $W$ is a matrix with the weights corresponding to the
+connections between the  the input to a given neuron is calculated as
+
+$$
+
+$$
+
+
+### Why do we want CNNs?
+
+Because they learn kernels by themselves!
 
 
 Bonus: Shifting a Signal
