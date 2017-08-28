@@ -79,20 +79,48 @@ find the borders of the following image of Lenna
 
 ![Convolution of a function with itself.](/public/lenna.bmp)
 
-The first thing to do is to create a function to convolve the image
+The first thing to do is to load the image:
+
+```python
+from PIL import Image
+img = Image.open('lena.bmp')
+```
+
+Then I want to create a function to convolve the image
 with the kernel:
 
-```
+```python
+# import numpy as np
+
 def convolve(image, kernel):
+	# Transforms the image into something that numpy can process
 	image_array = np.array(image)
+
+	# Initializes the image I want to return
 	new_image_array = np.zeros(image_array.shape)
+
+	# Convolve
 	for i in range(image_array.shape[0] - kernel.shape[0]):
 		for j in range(image_array.shape[1] - kernel.shape[1]):
+			# run_mask will perform the pointwise multiplication
+			# followed by sum
 			new_image_array[i][j] = run_mask(image_array, kernel, i, j)
 
+	# Creates a new Image object
 	new_image = Image.fromarray(new_image_array)
+
+	# Returns both the image as an array, and as an Image object
 	return new_image_array, new_image
 ```
+
+As you can see, I am using `numpy` to perform the calculations. I
+expect you not to find it hard to understand the code. It could
+obviously be written much more efficiently (`numpy` actually even
+has a function that performs the convolution anyway), but I wanted
+to show how the operations we saw in the last blog post can be easily
+translated into some piece of code.
+
+Now we need to define that `run_mask()` function. It 
 
 
 ### The Border Problem
