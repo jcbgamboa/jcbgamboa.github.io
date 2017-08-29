@@ -14,6 +14,46 @@ they were written. Hopefully, the mystery will make them more enjoyable :-)
 
 ## Poems in English
 
+###The Saarschleife
+
+_(Hopefully with time my poems will start sounding less childish =) )_
+
+A cloudy summer day
+<br>was when we went to see
+<br>a curvy river stray
+<br>through mounts, and through trees.
+
+A Saarbrücken train
+<br>we took, well, for free;
+<br>and then, through hills and plains,
+<br>to Mettlach we flee.
+
+In Mettlach we could
+<br>by bus or walking go.
+<br>By bus we thought we should:
+<br>the place we don't know.
+
+(and, lazy, we agreed
+<br>that hours in the woods
+<br>for no reason, no need!
+<br>It wouldn't mean no good!)
+
+Though photos we had seen,
+<br>Amazement abounded!
+<br>So awesome a scene!
+<br>We left there astounded.
+
+Yes, photos we had seen;
+<br>but photos couldn't capture
+<br>constrained in 2-D
+<br>the Saarschleife stature!
+
+Through mounts, and through trees,
+<br>the curvy river strays.
+<br>Impress whoever sees
+<br>the Saarschleife may.
+
+
 ### Villanelle of the Despair
 
 _(my first experiment with the structure of the
@@ -43,7 +83,6 @@ Again I learn, I then awake:
 <br>my want I ought not chase insane.
 <br>I, human, such is my mistake
 <br>a curse it is and will not break
-
 
 
 ### In the summer sundays
