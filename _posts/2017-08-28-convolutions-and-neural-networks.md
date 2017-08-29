@@ -253,7 +253,7 @@ in time, we multiply the values pointwise and then sum them all.
 Now... remember how the connections of the Convolutional Layer are
 organized:
 
-![One neuron](/public/conv2d_one_neuron.pdf)
+![One neuron](/public/conv2d_one_neuron.png)
 
 Let's look at one neuron individually. I'd like to call it $a$.
 It has access to a certain
@@ -292,7 +292,7 @@ help a little. It shows the subimages $A$ and $B$, and the connections
 $W$ and $V$, and how the values are summed when given as input to our
 neurons $a$ and $b$:
 
-![A_odot_W_and_B_odot_V](/public/conv2d.pdf)
+![A_odot_W_and_B_odot_V](/public/conv2d.png)
 
 Ok, so now you know that the Convolutional layer is running our
 $\odot$ operation on small subparts of the image.
@@ -383,6 +383,7 @@ $$
 (f \ast g) &= [0,0,0,0,3,4,5,4,3,0]
 \end{split}
 $$
+
 _(here, I am taking $t=0$ is when the first element of $f$ is aligned
 with the element in the center of $g$)_
 
