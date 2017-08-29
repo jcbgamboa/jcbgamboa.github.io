@@ -261,6 +261,8 @@ $f$ still and always transform $g$ according to our three steps to
 calculate the convolutions. It turns out that convolutions are
 commutative, and therefore the entire procedure would have also
 worked by holding $g$ still and changing $f$ in the same way.
+(Incidentally, they are also
+[associative](https://math.stackexchange.com/questions/2170534/proof-of-associativity-of-convolution))
 
 
 But what does all of this mean?
