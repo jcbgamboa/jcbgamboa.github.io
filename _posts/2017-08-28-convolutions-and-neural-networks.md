@@ -309,6 +309,8 @@ $$
 \sum_{1 \le i,j \le k}{W_{i,j}*C_{i,j}} &=
 \sum_{1 \le i,j \le k}{V_{i,j}*C_{i,j}}
 \end{split}
+$$
+
 (because, as I said $W = V$!)
 
 In summary, this means that the operation these layers are performing
