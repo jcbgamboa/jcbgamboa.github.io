@@ -4,8 +4,6 @@ layout: post
 title: Convolutions and Neural Networks
 ---
 
-(post under construction :-) )
-
 In my last blog post, I took you by the hand and guided you through
 the realm of convolutions. I hope to have made it clear why it makes
 sense to discretize functions and represent them as vector, and how
