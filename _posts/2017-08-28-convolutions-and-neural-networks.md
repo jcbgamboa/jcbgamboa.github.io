@@ -4,7 +4,8 @@ layout: post
 title: Convolutions and Neural Networks
 ---
 
-In my last blog post, I took you by the hand and guided you through
+[In my last blog post](https://vaulttech.github.io/2017/08/12/what-are-convolutions/),
+I took you by the hand and guided you through
 the realm of convolutions. I hope to have made it clear why it makes
 sense to discretize functions and represent them as vector, and how
 to calculate the convolution of 1D and 2D vectors.
