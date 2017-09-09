@@ -13,7 +13,7 @@ relative_permalinks: false
 title:            John Gamboa
 #tagline:          'Create something some day'
 description:      ''
-#url:              http://hyde.getpoole.com
+url:              https://vaulttech.github.io
 baseurl:          '/'
 
 author:
