@@ -156,67 +156,142 @@ of the people in a population, the _time_ people take to read a
 sentence, or the _age_ of people when they lose their first tooth.
 
 
-### On Continuous Distributions
-
-If a random variable can assume any value in a continuous interval,
-then a distribution over this random variable is also defined
-over all values of this interval. For example, if my random variable
-represents the height of a person (and let's assume this height can be
-anything between 10cm to 3m), then a distribution over this variable
-should be defined for every single element in the interval
-[10cm, 300cm].
-
-(While writing this text, I found
-[this applet](http://www.shodor.org/interactivate/activities/NormalDistribution/)
-that show a continuous Gaussian distribution and a histogram that
-resembles it. It will be useful for the discussion to follow)
-
-However, (and although it may not have been obvious by the discussion
-so far) the one
-trick that allows us to represent function as vectors is the fact
-that we discretize them first: they then become "countably infinite",
-which means that each element in the function can be indexed by an
-integer number. Since Continuous Distributions _are_ continuous
-functions [of a random variable], this is also valid for them.
-
-
-These discretized versions of our continuous distributions are
-basically histograms (and the size of the bins of the histogram
-work exactly like the space $s$ between each sample point).
-
-Now imagine what would happen if 
-
-If our distributions are non-negligible only for a certain range of our
-random variable (like the Gaussian function, where ~95% of the area
-below the curve is between the mean and two standard deviations
-around it), then we have a scenario that looks pretty much like the
-one we had when discussing Convolutions, and it should be clear how
-to transform this function into a finite vector.
-
-
 ### On Discrete Distributions
 
-Discrete Distributions are already 
+(I actually spent a lot of time writing about how continuous
+distributions could be reinterpreted as vectors, but I have the
+feeling it was becoming overcomplicated, so I thought I better
+dedicate one new blog post to my views on continuous distributions)
+
+I believe you should think of Discrete Distributions as the
+collection of the
+probabilities that a given random variable assumes any of the values
+it can assume. For example, let's say that my random variable $X$
+represents the current weather, and say that it can be one of the
+following three possibilities: (1) sunny, (2) cloudy, (3) rainy.
+Let's put these three values in a set $\mathcal{X}$, i.e.,
+$\mathcal{X} = \{sunny, cloudy, rainy\}$. Then
+a probability distribution would tell me $P(sunny)$, $P(cloudy)$ and
+$P(rainy)$. Let's say that we know the values for these three
+probabilities:
+
+$$
+\begin{align*}
+P(X = sunny)  &= 0.7  \\
+P(X = cloudy) &= 0.2  \\
+P(X = rainy)  &= 0.1  \\
+\end{align*}
+$$
+
+In that case, it should be easy to conclude that we could represent
+this probability distribution with the vector $[0.7, 0.2, 0.1]$.
+Yes! It is this simple! Each one of the outcomes becomes one of the
+elements of the vector. The ordering is arbitrary. We could have just
+as well chosen to create a vector $[0.2, 0.7, 0.1]$ from those three
+values.
+
+### But What If My Vector Does Not Sum Up To 1
+
+It may be too easy to transform a distribution into a vector; but
+what if I have a vector and would like to transform it into a
+probability distribution? For example, let's say that I have some
+computer program that receives all sorts of data (such as the
+humidity of the air in several sensors, the temperature, the speed
+of the wind, etc) and just outputs scores for how sunny, cloudy or
+rainy it may be. Imagine that one possible vector of scores is
+$[101, 379, 44]$. Let's call it $A$. To facilitate the notation, I
+would like to be able to call the three elements of $A$ by the value
+of $X$ they represent. So $A_{sunny} = 101$, $A_{cloudy} = 379$, and
+$A_{rainy} = 44$.
+If I wanted to transform $A$ into a distribution, then how should I
+proceed?
+
+There are actually two common ways of doing this. I'll start by the
+naïve way, which is not very common, but could be useful if your
+values are really _almost_ summing up to 1. (Really... they just need
+some rounding, and you'd like to make this rounding.) In this case,
+do it the easy way: just divide each number by the sum of all values
+in $A$.
+
+This solution would actually work well for our scores. Let's see how
+it works:
+
+$$
+\begin{align*}
+P(X = sunny)  &= \frac{101}{101 + 379 + 44} = 0.19 \\ \\
+P(X = cloudy) &= \frac{379}{101 + 379 + 44} = 0.72 \\ \\
+P(X = rainy)  &= \frac{44} {101 + 379 + 44} = 0.08 \\ \\
+P(X) &= [0.19, 0.72, 0.08]
+\end{align*}
+$$
+
+While this might seem like an intuitive way of doing things, this is
+normally not the way people transform vectors into probabilities.
+Why? Notice that this worked well because all our scores were
+positive. Take a look at what would have happened if our scores were
+$B = [10, -9, -1]$:
+
+$$
+\begin{align*}
+P(X = sunny)  &= \frac{10}{0} \\ \\
+P(X = cloudy) &= \frac{-9}{0} \\ \\
+P(X = rainy)  &= \frac{-1}{0} \\ \\
+\end{align*}
+$$
+
+[_(Ahem)_](http://i0.kym-cdn.com/photos/images/facebook/000/008/720/Divide_by_Zero_by_milkman_your_dad.jpg)
+
+You could argue that I should, then, instead, just take the absolute
+values of the scores. This would still not work: the probability
+$P(X=cloudy)$ would be almost the same as $P(X=sunny)$,
+even though $-9$ seems much "worse" than $10$ (or even worse than
+$-1$). Take a look:
+
+$$
+\begin{align*}
+P(X = sunny)  &= \frac{10}{20} \\ \\
+P(X = cloudy) &= \frac{9}{20}  \\ \\
+P(X = rainy)  &= \frac{1}{20}  \\ \\
+\end{align*}
+$$
+
+So what is the right way? To make things always work, we want to only
+have positive values in our fractions. What kind of function receives
+any real number and transforms it into some positive number? You bet
+well: the exponential! So what we want to do is to pass each
+element of $A$ (or $B$) through an exponential function. To make things
+concrete:
+
+$$
+\begin{align*}
+P(X = sunny)  &= \frac{e^{10}}{e^{10} + e^{-9} + e^{-1}} = \frac{22026.46}{22026.83} = 0.99998 \\ \\
+P(X = cloudy) &= \frac{e^{-9}}{e^{10} + e^{-9} + e^{-1}}  = \frac{0.0001234}{22026.83} = 0.0000000056 \\ \\
+P(X = rainy)  &= \frac{e^{-1}}{e^{10} + e^{-9} + e^{-1}}  = \frac{0.3679}{22026.83} = 0.0000167 \\ \\
+\end{align*}
+$$
+
+The exponential function does amplify a lot the discrepancy between
+the values (now $sunny$ has probability almost 1), but it is the
+common way of transforming real numbers into a probability
+distribution:
+
+$$
+P(X = x) = \frac{\exp({A_x})}{\sum_{i \in \mathcal{X}}{~exp({A_i})}}
+$$
+
+This formula goes by the name of _softmax_ and you should totally get
+super used to it: it appears everywhere in Machine Learning!
 
 
-3. Arrays can be reinterpreted as distributions
-
- * When we talk about distributions, we often think of densities
-
- * Discrete distributions
-
- * Representing them as vectors
-
- * Getting a distribution out of a non-sum to 1
-
- * This naturally brings up one-hot encoding
-
-
+Ok... but... so what? How is this even useful?
+----------------------------------------------
 
 
 
 
 4. How is this useful?
+
+  * One-hot encoding
 
   * Entropy
 
