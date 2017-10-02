@@ -211,3 +211,14 @@ The ideas we went through here are very powerful. They are what
 drives my interest in Deep Learning. I hope you can find them as
 interesting as I do =)
 
+I would like to thank three friends for having given me the ideas
+for this post (in alphabetic order to be fair):
+
+ * [Ayushman Dash](https://dashayushman.github.io/): who suggested
+	me to write it.
+ * [Bhupen Chauhan](https://bhupenchn.github.io/): he started the
+    wondering about the ideas of memory and representation.
+ * Sidharth Sahu (I'll add a link for him here soon): a lot of the
+    discussion here are my answers to questions he posed in the
+    conversation.
+
