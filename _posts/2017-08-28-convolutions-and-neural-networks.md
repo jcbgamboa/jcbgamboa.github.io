@@ -51,7 +51,7 @@ Image Processing
 Before I go into the CNNs I want to show why a Convolutional is
 something that we might want to do to an image. In my previous post,
 I tried to be as generic as possible, talking about functions and
-vectors, talking about things from a "signal processing" point of
+vectors, speaking from a "signal processing" point of
 view. It turns out that the Image Processing community has its own
 perspective. So, from now on, I will take $f$ as a 2D image that I
 want to somehow process, and to $g$ as a
@@ -68,7 +68,7 @@ not different: researchers in the area have found through the years
 several kernels that are known to perform well different kinds of
 tasks, such as _blurring_, _edge detection_, _sharpening_, etc.
 You can find a list of such kernels in the
-[Wikipedia article](https://en.wikipedia.org/wiki/Kernel_(image_processing).
+[Wikipedia article](https://en.wikipedia.org/wiki/Kernel_(image_processing)).
 
 I want to show how a convolution could be used to find the edges
 of an image. But this time, I don't want to show formulas; I think
@@ -122,7 +122,7 @@ has a function that performs the convolution anyway), but I wanted
 to show how the operations we saw in the last blog post can be easily
 translated into some piece of code.
 
-Now we need to define that `run_kernel()` function. It calculates
+Now we need to define that `run_kernel()` function. It calculates the
 $\odot$ operation between the part of the image that we are interested
 in and the (already flipped) kernel. This is as simple as:
 
@@ -183,7 +183,7 @@ For a kernel of size $1 \times 1$ (i.e., just a number), the size of
 the final image would be the same as the size of the original image
 If the kernel were $2 \times 2$, then the output would have size
 $n-1 \times n-1$. For a $3 \times 3$ kernel, it would be
-$n-2 \times n-2$. You can see how tthis generalizes to
+$n-2 \times n-2$. You can see how this generalizes to
 $n-(k+1) \times n-(k+1)$, where $k$ is the size of the kernel.
 
 It would be nice if I could find ways to get
@@ -248,7 +248,8 @@ Ok... so I think we covered everything there was to cover about
 Convolutions. Now I just need to answer: how do they relate to CNNs?
 
 Remember how the convolutions are being calculated: for a given point
-in time, we multiply the values pointwise and then sum them all.
+in "time", we multiply the values of both matrices pointwise and then
+sum them all.
 Now... remember how the connections of the Convolutional Layer are
 organized:
 
@@ -266,7 +267,7 @@ to the connections between $a$ and the values in $A$. Then
 the input to $a$ is calculated as
 
 $$
-\sum_{1 \le i,j \le k}{W_{i,j}*A_{i,j}}
+\sum_{1 \le i,j \le k}{W_{i,j} \times A_{i,j}}
 $$
 
 Doesn't this look a lot like the $\odot$ operation from our kernels?
@@ -281,7 +282,7 @@ connections between $b$ and $B$. Then, again, the input to $b$ is
 calculated as
 
 $$
-\sum_{1 \le i,j \le k}{V_{i,j}*B_{i,j}}
+\sum_{1 \le i,j \le k}{V_{i,j} \times B_{i,j}}
 $$
 
 Again, it looks a lot like I just calculated $B \odot V$, doesn't it?
@@ -305,8 +306,8 @@ that I would perform would still be
 
 $$
 \begin{split}
-\sum_{1 \le i,j \le k}{W_{i,j}*C_{i,j}} &=
-\sum_{1 \le i,j \le k}{V_{i,j}*C_{i,j}}
+\sum_{1 \le i,j \le k}{W_{i,j} \times C_{i,j}} &=
+\sum_{1 \le i,j \le k}{V_{i,j} \times C_{i,j}}
 \end{split}
 $$
 
@@ -343,8 +344,8 @@ useful in the end? This is **exactly** what Convolutional Neural
 Networks are for. The kernels that are learnt by the CNN are
 generally not very intuitive, and probably no human would have
 easily guessed that they are useful for the tasks that these networks
-are trying to solve (be it classification, of segmentation, of
-whatever). Still, they have been shown great results, and (I would
+are trying to solve (be it classification, of segmentation, or
+whatever). Still, they have shown great results, and (I would
 go so far as to say that) the times of "handcrafted feature
 engineering" are probably over.
 
