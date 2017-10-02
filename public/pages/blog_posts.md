@@ -11,7 +11,8 @@ I post. Hopefully this is useful for the interested visitor too :-)
     {% for post in site.posts %}    
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p><small><strong>{{ post.date | date: "%B %e, %Y" }}</strong></small></p>
-        <!-- <p><small><strong>{{ post.date | date: "%B %e, %Y" }}</strong> . {{ post.category }} . <a href="http://erjjones.github.com{{ post.url }}#disqus_thread"></a></small></p> -->
+        <!-- This post listing code snippet was taken from:
+        https://gist.github.com/erjjones/1998382 -->
     {% endfor %}
 <div>
 
