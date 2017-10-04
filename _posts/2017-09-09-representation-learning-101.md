@@ -219,6 +219,6 @@ for this post (in alphabetic order to be fair):
  * [Bhupen Chauhan](https://bhupenchn.github.io/): he started the
     wondering about the ideas of memory and representation.
  * Sidharth Sahu (I'll add a link for him here soon): a lot of the
-    discussion here are my answers to questions he posed in the
+    discussion here are my thoughts about his wonderings during the
     conversation.
 

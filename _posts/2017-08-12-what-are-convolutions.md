@@ -457,7 +457,7 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0 \\
 \end{bmatrix} \\
-&= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
+&= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 1) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
 &= 45
 \end{split}
 $$
@@ -478,7 +478,7 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0 \\
 \end{bmatrix} \\
-&= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 6) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
+&= (3 \times 0) + (6 \times 0) + (3 \times 4) + (6 \times 2) + (3 \times 1) + (6 \times 0) + (3 \times 0) + (6 \times 3) + (3 \times 0) \\
 &= 45
 \end{split}
 $$
@@ -497,7 +497,7 @@ $$
 2 & 1 & 0 \\
 0 & 3 & 0
 \end{bmatrix} \\
-&= (6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 6) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) \\
+&= (6 \times 0) + (3 \times 0) + (6 \times 4) + (3 \times 2) + (6 \times 1) + (3 \times 0) + (6 \times 0) + (3 \times 3) + (0 \times 0) \\
 &= 45
 \end{split}
 $$
@@ -531,4 +531,7 @@ Networks. As a bonus, I want to show a very elegant application
 of convolutions from the Neural Turing Machines.
 
 Stay tuned =)
+
+**UPDATE**: Thanks to Fotini Simistira for pointing some mistakes in
+my calculations.
 
