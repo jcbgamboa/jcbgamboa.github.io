@@ -91,7 +91,7 @@ for vectors (dot products, angles, norms) also should have some
 interpretation for discrete functions. Think about it!
 
 
-#### Disclaiming Interlude
+### Disclaiming Interlude
 
 To say the truth, I don't think that the lack of a "reference point",
 as I said before, is a problem at all. From a
@@ -149,7 +149,7 @@ because I don't want to bump into "the integral of a point", that is
 tricky and unnecessary here)_
 
 There is one more important element to be discussed about
-distributions: any distribution $d$ is a function of one of more
+distributions: any distribution is a function of one of more
 _random variables_. These variables represent the thing we are trying
 to find the probability for. For example, they might be the _height_
 of the people in a population, the _time_ people take to read a
@@ -167,13 +167,13 @@ I believe you should think of Discrete Distributions as the
 collection of the
 probabilities that a given random variable assumes any of the values
 it can assume. For example, let's say that my random variable $X$
-represents the current weather, and say that it can be one of the
+represents the current weather, and that it can be one of the
 following three possibilities: (1) sunny, (2) cloudy, (3) rainy.
 Let's put these three values in a set $\mathcal{X}$, i.e.,
-$\mathcal{X} = \{sunny, cloudy, rainy\}$. Then
-a probability distribution would tell me $P(sunny)$, $P(cloudy)$ and
-$P(rainy)$. Let's say that we know the values for these three
-probabilities:
+$\mathcal{X} = \\{sunny, cloudy, rainy \\}$. Then
+a probability distribution would tell me all of $P(sunny)$,
+$P(cloudy)$ and $P(rainy)$. Let's say that we know the values for
+these three probabilities:
 
 $$
 \begin{align*}
@@ -211,10 +211,14 @@ naïve way, which is not very common, but could be useful if your
 values are really _almost_ summing up to 1. (Really... they just need
 some rounding, and you'd like to make this rounding.) In this case,
 do it the easy way: just divide each number by the sum of all values
-in $A$.
+in $A$:
+
+$$
+P(X = x) = \frac{A_x}{\sum_{i \in \mathcal{X}}{~A_i}}
+$$
 
 This solution would actually work well for our scores. Let's see how
-it works:
+it works in practice:
 
 $$
 \begin{align*}
@@ -233,9 +237,9 @@ $B = [10, -9, -1]$:
 
 $$
 \begin{align*}
-P(X = sunny)  &= \frac{10}{0} \\ \\
-P(X = cloudy) &= \frac{-9}{0} \\ \\
-P(X = rainy)  &= \frac{-1}{0} \\ \\
+P(X = sunny)  &= \frac{10}{10 - 9 - 1}  = \frac{10}{0} \\ \\
+P(X = cloudy) &= \frac{-9}{10 - 9 - 1}  = \frac{-9}{0} \\ \\
+P(X = rainy)  &= \frac{-1}{10 - 9 - 1}  = \frac{-1}{0} \\ \\
 \end{align*}
 $$
 
@@ -249,9 +253,9 @@ $-1$). Take a look:
 
 $$
 \begin{align*}
-P(X = sunny)  &= \frac{10}{20} \\ \\
-P(X = cloudy) &= \frac{9}{20}  \\ \\
-P(X = rainy)  &= \frac{1}{20}  \\ \\
+P(X = sunny)  &= \frac{10}{10 + 9 + 1}  = \frac{10}{20} \\ \\
+P(X = cloudy) &= \frac{ 9}{10 + 9 + 1}  = \frac{9}{20}  \\ \\
+P(X = rainy)  &= \frac{ 1}{10 + 9 + 1}  = \frac{1}{20}  \\ \\
 \end{align*}
 $$
 
@@ -259,7 +263,7 @@ So what is the right way? To make things always work, we want to only
 have positive values in our fractions. What kind of function receives
 any real number and transforms it into some positive number? You bet
 well: the exponential! So what we want to do is to pass each
-element of $A$ (or $B$) through an exponential function. To make things
+element of $B$ (or $A$) through an exponential function. To make things
 concrete:
 
 $$
@@ -276,7 +280,7 @@ common way of transforming real numbers into a probability
 distribution:
 
 $$
-P(X = x) = \frac{\exp({A_x})}{\sum_{i \in \mathcal{X}}{~exp({A_i})}}
+P(X = x) = \frac{\exp({A_x})}{\sum_{i \in \mathcal{X}}{~\exp({A_i})}}
 $$
 
 This formula goes by the name of _softmax_ and you should totally get
