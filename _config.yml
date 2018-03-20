@@ -13,12 +13,12 @@ relative_permalinks: false
 title:            John Gamboa
 #tagline:          'Create something some day'
 description:      ''
-url:              https://vaulttech.github.io
+url:              https://jcbgamboa.github.io
 baseurl:          '/'
 
 author:
   name:           'John Gamboa'
-  url:            https://vaulttech.github.io
+  url:            https://jcbgamboa.github.io
 
 paginate:         5
 
@@ -26,5 +26,5 @@ paginate:         5
 
 #version:          2.1.0
 
-github:            https://github.com/vaulttech/
+github:            https://github.com/jcbgamboa/
 
