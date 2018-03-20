@@ -7,21 +7,34 @@ title: About me
   Put here something interesting...
 </p-->
 
-I am currently a Master student in Computer Science in the
-[University of Kaiserslautern]. In the field, I have a strong interest for
-Machine Learning, with a special focus on Deep Neural Networks, having
-experience with the mainstream Machine Learning libraries.
+I am Doctoral Student in Psychology and Psycholinguistics in the
+[University of Kaiserslautern]. My research interest is on the
+processing of a type of structure typically referred to as _Compound Nouns_
+or _Nominal Compounds_. While a lot of the existing research has been carried
+out in English, this structure is also present in several other languages,
+many of which follow different patterns. Theories that explain how such
+compounds are processed should also be capable of predicting the behavior of
+speakers of these languages. Therefore, my interest is not limited to
+English.
 
-In the course of the last five years, I have also grown interest for the
-Cognitive Sciences (initially for Linguistics; later for Psychology and
-Philosophy; and currently for Computational Neuroscience, given my focus
-on Deep Learning), having worked in the area for a while.
+I am additionally interested on the theoretical implications to the current
+models of human Working Memory that could arise from the relations I might
+find between the processing of nominal compounds and individual Working
+Memory abilities.
+
+Finally, Machine Learning has been some sort of a side interest, resulting
+from my background in Computer Science. In the area, my focus is on Deep
+Neural Networks, and I have used most of the currently mainstream Machine
+Learning libraries to develop my projects.
+
+You can find my page at the University of Kaiserslautern
+[here](https://www.sowi.uni-kl.de/en/psycholinguistics/team/john-gamboa/).
 
 My Curriculum Vitae is available
 [here](https://drive.google.com/open?id=0B2-sLZMv4F61VG5OcVlKeDVtQk0).
 
 
-Finally, I also like to write poems and songs. Check out the tabs in the
+Finally, I also like to write poems and songs. Check out the buttons in the
 side bar for a list of my "artistic production" :-)
 
 [University of Kaiserslautern]: https://www.uni-kl.de "TU KL"
