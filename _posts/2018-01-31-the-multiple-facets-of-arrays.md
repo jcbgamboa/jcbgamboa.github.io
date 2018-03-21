@@ -100,7 +100,7 @@ element as our "start", and from there we can index all other
 elements. We could even conveniently choose the element that
 corresponds to our $t = 0$, and it is almost as if we had $f$ back.
 Mathematicians are quite used to deal with "infinity", and
-it these seem quite reasonable ideas.
+these seem quite reasonable ideas.
 
 Other human beings, however, would probably not have the same ease,
 and our machines have unfortunately a limited amount of memory. We
@@ -141,7 +141,7 @@ seems so much more complicated than I'd like it to be). For our
 purposes here, I will consider a _distribution_ any function that
 satisfies the following two criteria:
 
- 1. It is composed exclusively by positive numbers
+ 1. It is composed exclusively of positive numbers
  2. The area below the curve sums up to 1
 
 _(For the avid reader: I am avoiding the word "integral"
@@ -151,7 +151,7 @@ tricky and unnecessary here)_
 There is one more important element to be discussed about
 distributions: any distribution is a function of one of more
 _random variables_. These variables represent the thing we are trying
-to find the probability for. For example, they might be the _height_
+to find the probability of. For example, they might be the _height_
 of the people in a population, the _time_ people take to read a
 sentence, or the _age_ of people when they lose their first tooth.
 
@@ -197,7 +197,7 @@ what if I have a vector and would like to transform it into a
 probability distribution? For example, let's say that I have some
 computer program that receives all sorts of data (such as the
 humidity of the air in several sensors, the temperature, the speed
-of the wind, etc) and just outputs scores for how sunny, cloudy or
+of the wind, etc.) and just outputs scores for how sunny, cloudy or
 rainy it may be. Imagine that one possible vector of scores is
 $[101, 379, 44]$. Let's call it $A$. To facilitate the notation, I
 would like to be able to call the three elements of $A$ by the value
@@ -290,20 +290,65 @@ super used to it: it appears everywhere in Machine Learning!
 Ok... but... so what? How is this even useful?
 ----------------------------------------------
 
+More or less at the same time I was writing this blog post, I was
+preparing some class related to Deep Learning that I was
+supposed to present at the University of Fribourg (in November/2017). I thought
+it would be a good idea to introduce the exact same discussion above to the
+people there. When I reached this part of the lecture, it became actually quite
+hard to find good reasons why knowing all of the above was useful.
+
+One reason, however, came to my mind, that I liked. If you
+know that the vector you have is a distribution (_i.e._, if you
+are able to interpret it this way), then all of the results you know from
+Information Theory should automatically apply. Most importantly, the discussion
+above should be able to justify why you would like to use the Cross-Entropy as a
+loss function to train your neural network. To make things clearer, let's say
+that you were given many images of digits written by hand (like those I referred
+to in [my previous blog post](https://jcbgamboa.github.io/2017/09/09/representation-learning-101/)):
+
+![MNIST digits](https://www.tensorflow.org/images/mnist_digits.png)
+
+Now let's say that you wanted to train a neural network that, given any of these
+images, would output the "class" that it belongs to. For example, in the image
+above, the first image is of the "class" 5, the second image is of the the
+class 0, and so on. If you are used to
+[backpropagation](https://en.wikipedia.org/wiki/Backpropagation)
+then you would (probably thoughtlessly) write your code using something like
+the `categorical_crossentropy` of
+[tflearn](http://tflearn.org/objectives/#categorical-crossentropy) (or anything
+equivalent). This function receives the output of the network (the values
+"predicted" by the network) and the expected output. This expected output is
+normally a one-hot encoded vector,
+_i.e._, a vector with zeros in all positions, except for the position
+corresponding to the class of the input, where it should have a 1. In our
+example, if the first position corresponds to the class 0, then every time we
+gave a picture of a 0 to the network we would also use, in the call to our loss
+function, a one-hot encoded vector with a 1 in the first position. If the second
+position corresponded to the class 1, then every time we gave a picture of a 1
+to the network we would also give a one-hot encoded vector with a 1 in the
+second position to our loss function.
+
+If you look at these two vectors, you will realize that both of them can be
+interpreted as probability distributions: the "predicted" vector (the vector
+output by the network) is the output of a softmax layer; and the "one-hot"
+encoded vector always sums up to 1 (because it has zeros in all positions
+except one of them). Since both of them are distributions, then we can
+calculate the cross-entropy $H(expected, predicted)$ as
+
+$$
+H(expected, predicted) = - \sum_i{expected_i \log(predicted_i)}
+$$
+
+and this value will be large when the predicted values are very different from
+the expected ones, which sounds like exactly what we would like to have as a
+loss function.
 
 
+Conclusion
+----------
 
-4. How is this useful?
-
-  * One-hot encoding
-
-  * Entropy
-
-  * Categorical cross-entropy
-
-  * For example, we could use the cosine between two functions $a$ and $b$ as a measure of their
-difference. 
-
-  * KL-Divergence
+Everything discussed in this blog post was extremely basic. I would have been
+very thankful, however, if anyone had told me these things before. I hope this
+will be helpful to people who are starting with Machine Learning.
 
 
