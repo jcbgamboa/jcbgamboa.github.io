@@ -32,7 +32,7 @@ Arrays Can Be Reinterpreted As Discrete Functions
 Let's recapitulate what we learned in the previous blog post. In the
 example, I had a signal $f$ that looked like the following:
 
-![The original f function](/public/...)
+![The original f function](/public/fx_continuous.png)
 
 Because we wanted to avoid calculating an integral (the calculation
 of the convolution, which was the problem we wanted to solve,
@@ -42,7 +42,7 @@ it would be a good approximation to just use a discrete version of
 this signal. We therefore sampled only certain evenly spaced points
 from this function, and we called this process "discretization":
 
-![The discretized f](/public/...)
+![The discretized f](/public/fx_discretized.png)
 
 _(In our original setting, $f$ was a function that turned out to be
 composed by non-zero values only in a small part of its domain. The
