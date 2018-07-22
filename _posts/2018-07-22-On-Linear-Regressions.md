@@ -281,7 +281,7 @@ This is a commonly used formula for evaluating the quality of a regression curve
 Unfortunately, the absolute-value function is not [differentiable](https://en.wikipedia.org/wiki/Differential_calculus) everywhere in its domain (that is, the derivative of this function is not defined at the point when $x = 0$ -- if you don't know what derivative or differentiation is, don't worry, this is not super crucial for understanding the rest). This is not a terrible problem, but we are going to need differentiation later, and a great alternative function that doesn't have this problem is the $L_2$ norm:
 
 $$
-\text{Error over all equations: } \\E_{L_2} = \sum_i{{\epsilon_i}^2} = \|\boldsymbol{\epsilon}\|_2 \\
+\text{Error over all equations: } \\E_{L_2} = \sum_i{ {\epsilon_i}^2} = \|\boldsymbol{\epsilon}\|_2 \\
 \text{(}\textit{i.e.}\text{, the Sum of Squared Errors)}
 $$
 
