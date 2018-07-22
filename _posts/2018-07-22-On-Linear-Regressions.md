@@ -159,7 +159,7 @@ pylab.ylim([15, 125])
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_8_2.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_8_2.png)
 
 
 It should be quite visible that you can have a good guess (from this data) of one of the values based on the other. That is, that you can guess the Total Reading Time based on the Mean Pupil Dilation
@@ -267,7 +267,7 @@ plt.plot(X, Y_dots, 'ro')
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_13_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_13_1.png)
 
 
 One solution could be to simply use the absolute value of each $\epsilon$ when calculating the error value:
@@ -387,7 +387,7 @@ plt.plot([10, 30, 50, 100, 200],
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_18_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_18_1.png)
 
 
 As you can see, when the slope is 10, the $L_2$ norm of the error vector is very high. As the slope keeps increasing, the error goes on decreasing, until a certain moment, when it increases again.
@@ -419,7 +419,7 @@ plt.plot(range(200), error_l2_norms)
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_20_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_20_1.png)
 
 
 Notice that so far we only moved the _slope_. We could do the same with the _intercept_. For example, let's say we fixed our slope in 75. Then we could generate graphs with intercepts, say, 0, 20, 40, 60, 80:
@@ -489,7 +489,7 @@ plt.plot([0, 20, 40, 60, 80],
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_22_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_22_1.png)
 
 
 Of course, again, we could plot the errors of curves for many other values of intercept:
@@ -519,7 +519,7 @@ plt.plot(range(100), error_l2_norms)
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_24_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_24_1.png)
 
 
 In each of the graphs above, we fixed a value for one of the variables (either the intercept or the slope) and iterated through many possible values of the other variable. It is important to notice that, as one of the variables change, the curve for the other variable also changes. In the example above, we had chosen a slope of 75. The example below shows what happens when we use a slope of 200. The graph to the left has an intercept of 0; the graph to the right shows how the error change as the intercept increases from 0 to 100.
@@ -560,7 +560,7 @@ plt.plot(range(100), error_l2_norms)
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_26_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_26_1.png)
 
 
 Of course, if one had time, one could try all possible combinations of slope and intercept and choose the best one. This would generate a surface in the 3D space:
@@ -593,7 +593,7 @@ surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, rstride=10, cstride=10)
 ```
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_28_0.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_28_0.png)
 
 
 But this approach would be too computationally intensive, and if you had more variables it would probably take too long.
@@ -672,7 +672,7 @@ plt.plot([3], [np.sin(0.5*3) + .3*3 + .01*3**2], 'ro')
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_33_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_33_1.png)
 
 
 **What would happen if we were at the red dot and used Gradient Descent to find a solution?**
@@ -728,7 +728,7 @@ ax.set_zlabel('Number of Fixations')
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_38_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_38_1.png)
 
 
 So now, with two input dimensions and one output dimension, we don't only have a line, characterized by a single _slope_ and a single _intercept_, but a plane, characterized by 3 variables: one _intercept_ and two _coefficients_.
@@ -973,7 +973,7 @@ axes.plot(x, y)
 
 
 
-![png](On%20Linear%20Regressions_files/On%20Linear%20Regressions_45_1.png)
+![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_45_1.png)
 
 
 Wrapping Up
