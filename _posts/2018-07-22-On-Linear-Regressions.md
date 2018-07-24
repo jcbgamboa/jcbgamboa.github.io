@@ -4,13 +4,33 @@ layout: post
 title: On Linear Regressions
 ---
 
-_This blog post has a somewhat different target public: instead of focusing on the Machine Learning practician, it targets the Cognitive Science student who often uses Regression in his everyday statistics without understanding well how it works. Of course, there is a lot more to say than what is written here, but hopefully it will be a good basis upon which to build_
+_This blog post has a somewhat different target public: instead of focusing on the Machine Learning practician, it targets the Cognitive Science student who often uses Regression in his everyday statistics without understanding well how it works. Of course, there is a lot more to say than what is written here, but hopefully it will be a good basis upon which to build._
 
-The [Psycholinguistics group of the University of Kaiserslautern](https://www.sowi.uni-kl.de/psycholinguistics/home/), where I am currently a PhD student, offered a course on Computational Linguistics this last Summer Semester (I don't know exactly how the year is divided in the rest of Germany, but here the semesters start in April and October, and are named Summer and Winter semesters, respectively), where I had the opportunity to give three classes. I ended up writing a lot of material on Linear Regression (and some other stuff) that I believe would be beneficial not only for the students of the class, but for anyone else interested in the topic. So, well, this is the idea of this blog post...
+The
+[Psycholinguistics group of the University of Kaiserslautern](https://www.sowi.uni-kl.de/psycholinguistics/home/),
+where I am currently a PhD student, offered a course on Computational
+Linguistics this last Summer Semester[^footnote1], where I had the opportunity
+to give three classes. I ended up writing a lot of material on Linear Regression
+(and some other stuff) that I believe would be beneficial not only for the
+students of the class, but for anyone else interested in the topic. So, well,
+this is the idea of this blog post...
 
-In the class, we used Python to (try to) make things more "palpable" to the students. I intend to do the exact same here. In fact, I am using `jupyter notebook` for the first time along with this blog (if you are reading this published, it is because it all went well). My goal with the Python codes below is to make the ideas implementable also by the interested reader. If you can't read Python, you should still be able to understand what is going on by just ignoring (most of) the code. Notice that most of the code blocks is organized in two parts: (1) the part that has code, which is normally colorful, highlighting the important Python words; and (2) the part that has the output, which is normally just grey. Sometimes the code will also output an image (which is actually the interesting thing to look at).
+[^footnote1]: I don't know exactly how the year is divided in the rest of Germany, but here the semesters start in April and October, and are named Summer and Winter semesters, respectively.
 
-Still... for those interested in the Python, the following code loads the libraries I am using throughout this blog post:
+In the class, we used Python to (try to) make things more "palpable" to the
+students. I intend to do the exact same here. In fact, I am using
+`jupyter notebook` for the first time along with this blog (if you are reading
+this published, it is because it all went well). My goal with the Python codes
+below is to make the ideas implementable also by the interested reader. If you
+can't read Python, you should still be able to understand what is going on by
+just ignoring (most of) the code. Notice that most of the code blocks is
+organized in two parts: (1) the part that has code, which is normally colorful,
+highlighting the important Python words; and (2) the part that has the output,
+which is normally just grey. Sometimes the code will also output an image
+(which is actually the interesting thing to look at).
+
+Still... for those interested in the Python, the following code loads the
+libraries I am using throughout this blog post:
 
 
 ```python
@@ -54,13 +74,13 @@ columns = ["gender",
            "num_fixations"]
 
 data = [
-    ['M',   0.90,  120,  20],
-    ['F',   0.89,  101,  18],
-    ['M',   0.79,  104,  24],
-    ['F',   0.91,  111,  19],
-    ['F',   0.77,   95,  20],
-    ['F',   0.63,   98,  22],
-    ['M',   0.55,   77,  30],
+    ['M',  0.90,  120,  20],
+    ['F',  0.89,  101,  18],
+    ['M',  0.79,  104,  24],
+    ['F',  0.91,  111,  19],
+    ['F',  0.77,   95,  20],
+    ['F',  0.63,   98,  22],
+    ['M',  0.55,   77,  30],
     ['M',  0.60,   80,  23],
     ['M',  0.55,   67,  56],
     ['F',  0.54,   63,  64],
@@ -71,8 +91,8 @@ data = [
 ]
 
 test_data = [
-    ['M',   0.87,  102,  17],
-    ['F',   0.74,  101,  12],
+    ['M',  0.87,  102,  17],
+    ['F',  0.74,  101,  12],
     ['M',  0.42,   60,  52],
     ['F',  0.36,   54,  44]
 ]
@@ -107,6 +127,20 @@ For the non-Python readers, this dataset is basically composed of the following 
 | F      | 0.74                | 101                | 12            |
 | M      | 0.42                | 60                 | 52            |
 | F      | 0.36                | 54                 | 44            |
+
+
+### Why do you have these two tables instead of one?
+
+I won't go into details here, but the way things work in Machine Learning is that
+you normally "train a model" using the _Training Data_ and then you use this
+model to try to predict the values in the _Test Data_. This way you can make sure
+that your model is capable of predicting values from data that it has never seen.
+
+In this blog post I won't actually use the _Test Data_, but I thought it made sense
+to show it here so that the reader keeps in mind that this is the way he would
+actually check if the Regression model that is learnt below is capable of
+generalizing to new data, that has never been used before.
+
 
 Defining Regression
 ===========
@@ -154,11 +188,6 @@ pylab.ylim([15, 125])
 
 
 
-    (15, 125)
-
-
-
-
 ![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_8_2.png)
 
 
@@ -190,7 +219,7 @@ $$
 \end{cases}
 $$
 
-The equations above came directly from our table above. For one of the participants, when `total_reading_time` is 66, the `mean_pupil_dilation` is 0.39. For the next, when the `total_reading_time` is 61, the `mean_pupil_dilation` is 0.4. We make the `total_reading_time` the `y` of our equation (the value that we want to predict), and it is predicted by a transformation of the `mean_pupil_dilation` (our `x`).
+The equations above came directly from our table above. For one of the participants, when `total_reading_time` is 66, the `mean_pupil_dilation` is 0.39. For the next, when the `total_reading_time` is 61, the `mean_pupil_dilation` is 0.4. We make the `total_reading_time` the $y$ of our equation (the value that we want to predict), and it is predicted by a transformation of the `mean_pupil_dilation` (our $x$).
 
 Of course, you don't need to be a genius to realize that this system of equations has no solution (that is, that no straight line will actually cross all the points in our graph). So, our goal is to find the _best_ line that gets the closest possible to all points we know. To indicate this in our equations, we insert a variable that stands for the "error".
 
@@ -241,13 +270,22 @@ Our goal is, then, for each of the equations above, to find values of $A$ and $b
 Evaluating a Regression solution
 -------------------------------------
 
-Now... there is a literally infinite number of possible lines, and we need to find a way to evaluate them, that is, decide if we like a certain line more than the others. For this, we probably should use the errors: lines that have big errors should be discarded, and lines that have low errors should be preferred. Unfortunately, there are several ways to "put together" all the $\epsilon_i$ denoting the errors associated with a given line. One way to "put together" all these $\epsilon_i$ could be summing them all:
+Now... there is a literally infinite number of possible lines, and we need to find a way to evaluate them, that is, decide if we like a certain line more than the others. For this, we probably should use the errors (i.e., the $\boldsymbol{\epsilon}$): lines that have big errors should be discarded, and lines that have low errors should be preferred. Unfortunately, there are several ways to "put together" all the $\epsilon_i$ denoting the errors associated with a given line. One way to "put together" all these $\epsilon_i$ could be summing them all:
 
 $$
 \text{Error over all equations: } \\E_{naïve} = \sum_i{\epsilon_i}
 $$
 
-However, you might have guessed by the word "naïve" there that this formula has problems. The problem with this formula the following: that, when some points are above and some points are below the line, the errors will "cancel" each other. For example:
+However, you might have guessed by the word "naïve" there that this formula has
+problems. The problem with this formula the following: that, when some points are
+above and some points are below the line, the errors will "cancel" each other.
+For example, in the image below, the line does not cross any of the data points,
+but still produces an $E_{naïve} = 0$. How?
+The line passes at a distance of exactly 1 from the first five data points,
+producing a positive error (because the points are above the line) of 1 for each
+of them; but also passes at a distance of exactly 5 from the sixth data point,
+producing a negative error (because the point is below the line) of -5. When you
+sum up everything, you get $E_{naïve} = 1 + 1 + 1 + 1 + 1 - 5 = 0$.
 
 
 ```python
@@ -270,7 +308,8 @@ plt.plot(X, Y_dots, 'ro')
 ![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_13_1.png)
 
 
-One solution could be to simply use the absolute value of each $\epsilon$ when calculating the error value:
+One solution to this problem could be to simply use the absolute value of each
+$\epsilon$ when calculating the error value:
 
 $$
 \text{Error over all equations: } \\E_{L_1} = \sum_i{\mid\epsilon_i\mid} = \|\boldsymbol{\epsilon}\|_1
@@ -285,6 +324,8 @@ $$
 \text{(}\textit{i.e.}\text{, the Sum of Squared Errors)}
 $$
 
+The code below shows each of the alternative errors for the simple example above,
+where, as we saw, the $E_{naïve} = 0$.
 
 ```python
 # (Following the example immediately above)
@@ -304,14 +345,14 @@ print("Error L2:    ", np.sum((Y_dots - Y_line)**2))
     Error L2:     30
 
 
-This last function is **the** usual choice for evaluating the Regression line. It is differentiable everywhere, but is not so robust to outliers as the $L_1$ norm.
+This last function (the $E_{L_2}$) is **the** usual choice for evaluating the Regression line. It is differentiable everywhere, but is not so robust to outliers as the $L_1$ norm.
 
 Motivating Gradient Descent (a method to find the _best_ line)
 ---------------------------------------------------
 
 In the sections above, we have defined what we want to get: a good line -- hopefully, the best one -- that (almost) crosses all the points in our dataset. We have also understood how to decide if a line is good or not, based on the errors between the value predicted by the line and the value that appears in our data.
 
-The images below show several possible lines, with slopes 10, 30, 50, 100 and 200. The last graph shows the _Sum of Squared Errors_ (the $L_2$ norm of the error vector $\epsilon$) for each of the lines:
+The images below show several possible lines, with an intercept of 0 and slopes 10, 30, 50, 100 and 200. The last graph shows the _Sum of Squared Errors_ (the $L_2$ norm of the error vector $\epsilon$) for each of the lines:
 
 
 ```python
@@ -390,7 +431,7 @@ plt.plot([10, 30, 50, 100, 200],
 ![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_18_1.png)
 
 
-As you can see, when the slope is 10, the $L_2$ norm of the error vector is very high. As the slope keeps increasing, the error goes on decreasing, until a certain moment, when it increases again.
+As you can see, when the slope is 10 (the first graph, and the leftmost data point in the last graph), the $L_2$ norm of the error vector is very high. As the slope keeps increasing, the error goes on decreasing, until a certain moment (somewhere between the slopes 100 and 200), when it increases again.
 
 We could plot the Sum of Squared errors of many many of these lines, and we would get a function that looks like the following:
 
@@ -601,13 +642,16 @@ But this approach would be too computationally intensive, and if you had more va
 Enter Gradient Descent
 ---------------------
 
-To solve this problem in an easy way, we use Gradient Descent. We will first understand the intuition of Gradient Descent, and then understand how the maths work.
+To solve this problem in an easy way, we use Gradient Descent. We will first
+understand the intuition of Gradient Descent, and then I will show the maths.
 
 Using our example above, let's focus on what Gradient Descent would do if we had the two variables _Intercept_ and _Slope_ and wanted to find the best configuration of _Intercept_ and _Slope_ (i.e., the configuration for which the error is minimum). Gradient Descent would start with any random configuration. Then, given this configuration, it would ask:
 
  * In which direction (and how 'strongly') do I need to change my _Intercept_ so that my error would increase?"
 
-In more fancy mathy terms, it would calculate the _derivative_ of the error function (the surface plotted above) with respect to the variable _Intercept_. It would then keep this "direction" in a variable.
+In more fancy mathy terms, it would calculate the _derivative_[^footnote2] of the error function (the surface plotted above) with respect to the variable _Intercept_. It would then keep this "direction" in a variable.
+
+[^footnote2]: This is where we need the derivative, that I spoke about when discussing the possible error functions.
 
 At the same time, it would also ask:
 
@@ -615,11 +659,20 @@ At the same time, it would also ask:
     
 Again, this is the same as calculating the _derivative_ of the error function with respect to the _Slope_. It would then also store this "direction" in a variable.
 
-Finally, it would take the current _Intercept_ and _Slope_ and update them using the values it just calculated: since it calculated the direction in which the error would _increase_, it updates the two variables in the opposite direction).
+Finally, it would take the current _Intercept_ and _Slope_ and update them using the values it just calculated. But there is a catch: since it calculated the direction in which the error would _increase_, it updates the two variables in the opposite direction.
+
 
 ### More formally
 
-Now we are ready to understand the formal notation for the algorithm. Remember that our error function is the _Sum of Squared Errors_, also referred to as the $L_2$-norm of the error vector $\boldsymbol{\epsilon}$, and that this $L_2$-norm is normally written as $\| \cdot \|_2$. That is, the $L_2$-norm of $\boldsymbol{\epsilon}$ is normally written $\| \boldsymbol{\epsilon} \|_2$.
+Now we are ready to understand the formal notation for the algorithm. Remember
+that our error function is the _Sum of Squared Errors_, also referred to as the
+$L_2$-norm of the error vector $\boldsymbol{\epsilon}$, and that this $L_2$-norm
+is normally written as $\| \cdot \|_2$[^footnote3]. That is, the $L_2$-norm of
+$\boldsymbol{\epsilon}$ is normally written $\| \boldsymbol{\epsilon} \|_2$.
+
+[^footnote3]: I noticed that for some reason the blog is showing only one |
+instead of two. I couldn't find a way to fix this, so I would like ask you to
+just consider the | and the || as the same thing.
 
 Proceeding, we want to represent the _derivative_ of the error function with respect to the variables _Intercept_ (which we were referring to as $A$) and _Slope_ (which we were referring to as $b$). These derivatives are normally written as
 
@@ -645,11 +698,16 @@ A \leftarrow A - \lambda \cdot \frac{\partial \|\boldsymbol{\epsilon}\|_2}{\part
 b \leftarrow b - \lambda \cdot \frac{\partial \|\boldsymbol{\epsilon}\|_2}{\partial b}
 $$
 
-The $\lambda$ there is the "learning rate": it might make sense to make smaller or bigger jumps if you know you are too close or too far away from the local minimum.
+The $\lambda$ there is the "learning rate". It is just a number multiplying each
+of the elements of the Gradient. The idea is that it might make sense to make smaller
+or bigger jumps if you know you are too close or too far away from a good configuration
+of parameters.
+
 
 ### Problems with Gradient Descent
 
-The Gradient Descent procedure will normally help us find a so-called "local minimum": a solution that is better than all solutions nearby. Consider, however, the graph below:
+The Gradient Descent procedure will normally help us find a so-called "local minimum":
+a solution that is better than all solutions nearby. Consider, however, the graph below:
 
 
 ```python
@@ -675,9 +733,17 @@ plt.plot([3], [np.sin(0.5*3) + .3*3 + .01*3**2], 'ro')
 ![png](/public/On%20Linear%20Regressions_files/On%20Linear%20Regressions_33_1.png)
 
 
-**What would happen if we were at the red dot and used Gradient Descent to find a solution?**
+What would happen if we were at the red dot and used Gradient Descent to find a solution?
+The algorithm might get stuck in the local minimum immediately to its right (near $x = -5$),
+and never manage to find the global minimum (around $x = 15$). You should always keep this
+in mind when using Gradient Descent.
 
-Even though there might be shortcomings to Gradient Descent, this is _the method_ used in a lot of Machine Learning problems, and this is in part why we took a look at it. The problem of Linear Regression is very often a "convex optimization problem", which means it doesn't have those local minima above. _(they will appear, however, soon, in other problems, so it is useful to discuss them here)_
+Even though there might be shortcomings to Gradient Descent, this is _the method_ used in a
+lot of Machine Learning problems, and this is why I am introducing it here. The problem of
+Linear Regression is very often a "convex optimization problem", which means it doesn't have
+those local minima above.
+
+
 
 ## Going beyond 1-dimensional inputs
 
@@ -834,7 +900,8 @@ $$
               + b + \boldsymbol{\epsilon}
 $$
 
-Just to make it clear, that "$\top$" over the matrix containing our numbers indicates that the matrix was transposed. You could rewrite the equation as:
+Just to make it clear, that "$\top$" over the matrix containing our numbers
+indicates that the matrix was transposed. You could rewrite the equation as:
 
 $$
 \begin{bmatrix}
@@ -941,11 +1008,10 @@ reg.coef_, reg.intercept_
     Y:  [120. 101. 104. 111.  95.  98.  77.  80.  67.  63.  59.  57.  61.  66.]
 
 
-
-
-
     (array([106.68664055]), 15.649335484366574)
 
+
+Now we can just plot the line we found using the intercept and slope we found:
 
 
 
@@ -981,4 +1047,13 @@ Wrapping Up
 
 Recapitulating, we defined the problem of Regression, defined a (fictitious) dataset on which to base our examples, formulated the problem for one dimension, learned how to evaluate a "solution", and how this evaluation is used to iteratively find better and better lines (using the Gradient Descent algorithm). Then we expanded the idea for more than one dimension, and finally saw how to do this in Python (actually, we just used a function -- which actually probably doesn't use this method, but, oh, well, the result is what we were looking for).
 
-There is A LOT more to talk about this, but hopefully this was a gentle enough introduction to the topic. In a next post, I intend to cover Logistic Regression, and how 
+There is A LOT more to talk about this, but hopefully this was a gentle enough introduction to the topic. In a next post, I intend to cover Logistic Regression. Hopefully, in a third post, I will be able to show how Logistic Regression relates to the artificial neuron.
+
+Very importantly, I think I should mention that this blog post wouldn't have come
+into existence if it were not for Kristina Kolesova and [Philipp Blandfort](pblandfort.com),
+who organized the course of Computational Linguistics in the University along with me,
+and [Shanley Allen](https://www.sowi.uni-kl.de/psycholinguistics/team/professor-dr-shanley-em-allen/), my PhD advisor, who caused us to bring the course into existence. [^footnote4]
+
+[^footnote4]: I didn't ask them for permission to have them mentioned here (I hope
+this is not a problem).
+
