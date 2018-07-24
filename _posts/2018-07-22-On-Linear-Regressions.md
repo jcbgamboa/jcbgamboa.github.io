@@ -670,7 +670,7 @@ $L_2$-norm of the error vector $\boldsymbol{\epsilon}$, and that this $L_2$-norm
 is normally written as $\| \cdot \|_2$[^footnote3]. That is, the $L_2$-norm of
 $\boldsymbol{\epsilon}$ is normally written $\| \boldsymbol{\epsilon} \|_2$.
 
-[^footnote3]: I noticed that for some reason the blog is showing only one | instead of two. I couldn't find a way to fix this, so I would like ask you to just consider the | and the || as the same thing.
+[^footnote3]: I noticed that for some reason the blog is showing only one \| instead of two. I couldn't find a way to fix this, so I would like ask you to just consider the \| and the \|\| as the same thing.
 
 Proceeding, we want to represent the _derivative_ of the error function with respect to the variables _Intercept_ (which we were referring to as $A$) and _Slope_ (which we were referring to as $b$). These derivatives are normally written as
 
