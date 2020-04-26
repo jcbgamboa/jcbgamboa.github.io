@@ -111,7 +111,11 @@ are way more people for the virus to infect in these smaller
 municipalities in São Paulo than Amazonas. The variance is huge!
 
 Ok. With these disclaimers in mind, let's take a look at some of
-the states. The following are the data in my state, Rio Grande do
+the states. In the graphs below, each point represents a municipality.
+I'm not naming them because I'm assuming most readers won't actually
+care. I am only including municipalities that had _already_ registered
+at least one case.
+The following are the data in my state, Rio Grande do
 Sul (shortened as RS):
 
 ![covid_hdibyfirstday](/public/covid_hdibyfirstday_RS.png)
