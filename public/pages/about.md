@@ -28,7 +28,7 @@ Neural Networks, and I have used most of the currently mainstream Machine
 Learning libraries to develop my projects.
 
 You can find my page at the University of Kaiserslautern
-[here](https://www.sowi.uni-kl.de/en/psycholinguistics/team/john-gamboa/).
+[here](https://www.sowi.uni-kl.de/psycholinguistics/team/john-gamboa/).
 
 My Curriculum Vitae is available
 [here](https://drive.google.com/open?id=0B2-sLZMv4F61VG5OcVlKeDVtQk0).
