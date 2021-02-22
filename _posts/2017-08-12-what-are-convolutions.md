@@ -102,7 +102,7 @@ positive, then $g'$ will be shifted to the right; otherwise, it will
 be shifted to the left. For our example, let's say that $t=0.3$.
 I'll call this function $g_{shifted}'$
 
-![Shifted signal](public/convolution_explained3.png)
+![Shifted signal](/public/convolution_explained3.png)
 
 **Third**: this is the step where the problems arise.
 Now what you want is actually multiply the two
